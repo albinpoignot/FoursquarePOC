@@ -1,13 +1,13 @@
 package com.albinpoignot.foursquarepoc.services;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.albinpoignot.foursquarepoc.models.CompactVenue;
 import com.albinpoignot.foursquarepoc.network.FoursquareServiceGenerator;
 import com.albinpoignot.foursquarepoc.network.NearestVenuesListener;
 import com.albinpoignot.foursquarepoc.network.VenueClient;
-import com.albinpoignot.foursquarepoc.network.entities.VenueSearchResponse;
+import com.albinpoignot.foursquarepoc.network.entities.FoursquareResponse;
+import com.albinpoignot.foursquarepoc.network.entities.VenueSearchResponseContent;
 
 import java.util.List;
 
@@ -38,10 +38,9 @@ public class NearestVenuesAsyncTask extends AsyncTask<String, Void, List<Compact
         {
             address = "";
         }
-        
-        VenueSearchResponse compactVenuesList = venueClient.searchNearestVenues(address);
 
-        return compactVenuesList.getResponseField().getCompactVenues();
+        VenueSearchResponseContent venueSearchResponseContent = venueClient.searchNearestVenues(address, 10).getResponseField();
+        return venueSearchResponseContent.getCompactVenues();
     }
 
     @Override

@@ -1,8 +1,11 @@
 package com.albinpoignot.foursquarepoc.network;
 
-import com.albinpoignot.foursquarepoc.network.entities.VenueSearchResponse;
+import com.albinpoignot.foursquarepoc.network.entities.FoursquareResponse;
+import com.albinpoignot.foursquarepoc.network.entities.VenueResponseContent;
+import com.albinpoignot.foursquarepoc.network.entities.VenueSearchResponseContent;
 
 import retrofit.http.GET;
+import retrofit.http.Path;
 import retrofit.http.Query;
 
 /**
@@ -13,6 +16,8 @@ public interface VenueClient
 {
 
     @GET("/venues/search")
-    VenueSearchResponse searchNearestVenues(@Query("near")String near);
+    FoursquareResponse<VenueSearchResponseContent> searchNearestVenues(@Query("near")String near, @Query("limit")Integer limit);
 
+    @GET("/venues/{id}")
+    FoursquareResponse<VenueResponseContent> getVenue(@Path("id")String id);
 }

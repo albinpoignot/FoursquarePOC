@@ -3,8 +3,8 @@ package com.albinpoignot.foursquarepoc.models;
 /**
  * Created by Albin on 14/10/2015.
  */
-public class Category {
-
+public class Category
+{
     private String id;
 
     private String name;
@@ -12,8 +12,6 @@ public class Category {
     private String pluralName;
 
     private String shortName;
-
-    private Icon icon;
 
     private Boolean primary;
 
@@ -55,16 +53,6 @@ public class Category {
     public void setShortName(String shortName)
     {
         this.shortName = shortName;
-    }
-
-    public Icon getIcon()
-    {
-        return icon;
-    }
-
-    public void setIcon(Icon icon)
-    {
-        this.icon = icon;
     }
 
     public Boolean getPrimary()
