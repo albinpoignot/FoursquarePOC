@@ -29,13 +29,17 @@ public class NearestVenuesAsyncTask extends AsyncTask<String, Void, List<Compact
     {
         VenueClient venueClient = FoursquareServiceGenerator.createService(VenueClient.class);
 
-        // TODO Check IndexOutOfBoundException
-        VenueSearchResponse compactVenuesList = venueClient.searchNearestVenues(params[0]);
-
-        /*for(CompactVenue compactVenue : compactVenuesList.getResponseField().getCompactVenues())
+        String address;
+        if(params.length > 0)
         {
-            Log.i("Albin", compactVenue.toString());
-        }*/
+            address = params[0];
+        }
+        else
+        {
+            address = "";
+        }
+        
+        VenueSearchResponse compactVenuesList = venueClient.searchNearestVenues(address);
 
         return compactVenuesList.getResponseField().getCompactVenues();
     }
