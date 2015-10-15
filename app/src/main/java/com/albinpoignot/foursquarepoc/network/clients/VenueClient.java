@@ -9,7 +9,7 @@ import retrofit.http.Path;
 import retrofit.http.Query;
 
 /**
- * A client to request the Venue part of the Foursquare's API
+ * A client to request the FoursquareVenue part of the Foursquare's API
  * Created by Albin on 14/10/2015.
  */
 public interface VenueClient

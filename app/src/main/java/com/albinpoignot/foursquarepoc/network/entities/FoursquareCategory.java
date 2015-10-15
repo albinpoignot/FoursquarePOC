@@ -1,9 +1,9 @@
-package com.albinpoignot.foursquarepoc.models;
+package com.albinpoignot.foursquarepoc.network.entities;
 
 /**
  * Created by Albin on 14/10/2015.
  */
-public class Category
+public class FoursquareCategory
 {
     private String id;
 

@@ -1,6 +1,6 @@
 package com.albinpoignot.foursquarepoc.network.entities;
 
-import com.albinpoignot.foursquarepoc.models.CompactVenue;
+import com.albinpoignot.foursquarepoc.models.LightPlace;
 
 import java.util.List;
 
@@ -9,13 +9,13 @@ import java.util.List;
  */
 public class VenueSearchResponseContent
 {
-    private List<CompactVenue> venues;
+    private List<FoursquareCompactVenue> venues;
 
-    public List<CompactVenue> getCompactVenues() {
+    public List<FoursquareCompactVenue> getCompactVenues() {
         return venues;
     }
 
-    public void setCompactVenues(List<CompactVenue> compactVenues) {
-        this.venues = compactVenues;
+    public void setCompactVenues(List<FoursquareCompactVenue> lightPlaces) {
+        this.venues = lightPlaces;
     }
 }

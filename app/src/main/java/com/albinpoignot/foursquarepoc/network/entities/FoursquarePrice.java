@@ -1,9 +1,9 @@
-package com.albinpoignot.foursquarepoc.models;
+package com.albinpoignot.foursquarepoc.network.entities;
 
 /**
  * Created by Albin POIGNOT on 15/10/15.
  */
-public class Price
+public class FoursquarePrice
 {
 	private String message;
 

@@ -1,19 +1,19 @@
-package com.albinpoignot.foursquarepoc.models;
+package com.albinpoignot.foursquarepoc.network.entities;
 
 import java.util.List;
 
 /**
  * Created by Albin on 14/10/2015.
  */
-public class CompactVenue
+public class FoursquareCompactVenue
 {
     protected String id;
 
 	protected String name;
 
-	protected Location location;
+	protected FoursquareLocation location;
 
-	protected List<Category> categories;
+	protected List<FoursquareCategory> categories;
 
     public String getId()
     {
@@ -35,22 +35,22 @@ public class CompactVenue
         this.name = name;
     }
 
-    public Location getLocation()
+    public FoursquareLocation getLocation()
     {
         return location;
     }
 
-    public void setLocation(Location location)
+    public void setLocation(FoursquareLocation location)
     {
         this.location = location;
     }
 
-    public List<Category> getCategories()
+    public List<FoursquareCategory> getCategories()
     {
         return categories;
     }
 
-    public void setCategories(List<Category> categories)
+    public void setCategories(List<FoursquareCategory> categories)
     {
         this.categories = categories;
     }
@@ -58,7 +58,7 @@ public class CompactVenue
     @Override
     public String toString()
     {
-        return "CompactVenue{" +
+        return "FoursquareCompactVenue{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", location=" + location +

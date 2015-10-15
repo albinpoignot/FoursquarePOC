@@ -1,17 +1,17 @@
-package com.albinpoignot.foursquarepoc.models;
+package com.albinpoignot.foursquarepoc.network.entities;
 
 /**
  * Created by Albin on 14/10/2015.
  */
-public class Venue extends CompactVenue
+public class FoursquareVenue extends FoursquareCompactVenue
 {
     private String description;
 
     private String url;
 
-    private Hour hours;
+    private FoursquareHour hours;
 
-    private Price price;
+    private FoursquarePrice price;
 
     private Float rating;
 
@@ -35,22 +35,22 @@ public class Venue extends CompactVenue
         this.url = url;
     }
 
-    public Hour getHours()
+    public FoursquareHour getHours()
     {
         return hours;
     }
 
-    public void setHours(Hour hours)
+    public void setHours(FoursquareHour hours)
     {
         this.hours = hours;
     }
 
-    public Price getPrice()
+    public FoursquarePrice getPrice()
     {
         return price;
     }
 
-    public void setPrice(Price price)
+    public void setPrice(FoursquarePrice price)
     {
         this.price = price;
     }

@@ -6,18 +6,18 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.albinpoignot.foursquarepoc.R;
-import com.albinpoignot.foursquarepoc.models.Venue;
+import com.albinpoignot.foursquarepoc.models.Place;
 import com.albinpoignot.foursquarepoc.network.listeners.GetVenuesListener;
-import com.albinpoignot.foursquarepoc.services.VenueAsyncTask;
+import com.albinpoignot.foursquarepoc.services.PlaceAsyncTask;
 
 /**
  * Created by Albin POIGNOT on 15/10/15.
  */
-public class VenueDetailsActivity extends Activity implements GetVenuesListener
+public class PlaceDetailsActivity extends Activity implements GetVenuesListener
 {
-	public static final String VENUE_ID_TAG = "VenueDetailsActivity.venueId";
+	public static final String VENUE_ID_TAG = "PlaceDetailsActivity.venueId";
 
-	private Venue currentVenue;
+	private Place currentVenue;
 
 	private TextView txtName;
 	private TextView txtLocation;
@@ -58,14 +58,14 @@ public class VenueDetailsActivity extends Activity implements GetVenuesListener
 			{
 				String currentVenueId = intent.getStringExtra(VENUE_ID_TAG);
 
-				VenueAsyncTask asyncTask = new VenueAsyncTask(this);
+				PlaceAsyncTask asyncTask = new PlaceAsyncTask(this);
 				asyncTask.execute(currentVenueId);
 			}
 		}
 	}
 
 	@Override
-	public void onVenueReceived(Venue venue)
+	public void onVenueReceived(Place venue)
 	{
 		currentVenue = venue;
 		setViewsContent();
@@ -95,14 +95,14 @@ public class VenueDetailsActivity extends Activity implements GetVenuesListener
 				txtUrl.setText(currentVenue.getUrl());
 			}
 
-			if(currentVenue.getHours() != null)
+			if(currentVenue.getStatus() != null)
 			{
-				txtHours.setText(currentVenue.getHours().getStatus());
+				txtHours.setText(currentVenue.getStatus());
 			}
 
 			if(currentVenue.getPrice() != null)
 			{
-				txtPrice.setText(currentVenue.getPrice().getMessage());
+				txtPrice.setText(currentVenue.getPrice());
 			}
 
 			if(currentVenue.getRating() != null)

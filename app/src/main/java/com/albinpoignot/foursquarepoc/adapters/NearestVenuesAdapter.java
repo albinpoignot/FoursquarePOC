@@ -8,8 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.albinpoignot.foursquarepoc.R;
-import com.albinpoignot.foursquarepoc.models.Category;
-import com.albinpoignot.foursquarepoc.models.CompactVenue;
+import com.albinpoignot.foursquarepoc.models.LightPlace;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,29 +19,29 @@ import java.util.List;
 public class NearestVenuesAdapter extends BaseAdapter
 {
     private LayoutInflater inflater;
-    private List<CompactVenue> compactVenues;
+    private List<LightPlace> lightPlaces;
 
     public NearestVenuesAdapter(Context context)
     {
         this.inflater = LayoutInflater.from(context);
-        this.compactVenues = new ArrayList<>();
+        this.lightPlaces = new ArrayList<>();
     }
 
-    public void setCompactVenues(List<CompactVenue> compactVenues)
+    public void setLightPlaces(List<LightPlace> lightPlaces)
     {
-        this.compactVenues.clear();
-        this.compactVenues.addAll(compactVenues);
+        this.lightPlaces.clear();
+        this.lightPlaces.addAll(lightPlaces);
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return compactVenues.size();
+        return lightPlaces.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return compactVenues.get(position);
+        return lightPlaces.get(position);
     }
 
     @Override
@@ -71,13 +70,13 @@ public class NearestVenuesAdapter extends BaseAdapter
             holder = (ViewHolder) convertView.getTag();
         }
 
-        CompactVenue venue = compactVenues.get(position);
+        LightPlace place = lightPlaces.get(position);
 
-        holder.txtName.setText(venue.getName());
+        holder.txtName.setText(place.getName());
 
-        if(venue.getLocation() != null && venue.getLocation().getDistance() != null)
+        if(place.getLocation() != null && place.getLocation().getDistance() != null)
         {
-            holder.txtDistance.setText(venue.getLocation().getDistance());
+            holder.txtDistance.setText(place.getLocation().getDistance());
             holder.txtDistance.setVisibility(View.VISIBLE);
         }
         else
@@ -85,9 +84,10 @@ public class NearestVenuesAdapter extends BaseAdapter
             holder.txtDistance.setVisibility(View.GONE);
         }
 
-        if(venue.getCategories() != null && venue.getCategories().size() > 0)
+		String placeCategory = place.getCategory();
+        if(placeCategory != null && !placeCategory.isEmpty())
         {
-            holder.txtCategories.setText(venue.getCategories().get(0).getName());
+            holder.txtCategories.setText(placeCategory);
             holder.txtDistance.setVisibility(View.VISIBLE);
         }
         else

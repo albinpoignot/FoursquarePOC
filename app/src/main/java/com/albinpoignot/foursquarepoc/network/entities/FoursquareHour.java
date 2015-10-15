@@ -1,9 +1,9 @@
-package com.albinpoignot.foursquarepoc.models;
+package com.albinpoignot.foursquarepoc.network.entities;
 
 /**
  * Created by Albin on 15/10/2015.
  */
-public class Hour
+public class FoursquareHour
 {
     private String status;
 
