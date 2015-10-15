@@ -47,16 +47,16 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_venue_details);
+		setContentView(R.layout.activity_place_details);
 
-		txtName = (TextView) findViewById(R.id.venue_details_name);
-		txtCategory = (TextView) findViewById(R.id.venue_details_type);
-		txtLocation = (TextView) findViewById(R.id.venue_details_location);
-		txtDescription = (TextView) findViewById(R.id.venue_details_description);
-		txtUrl = (TextView) findViewById(R.id.venue_details_url);
-		txtStatus = (TextView) findViewById(R.id.venue_details_hours);
-		txtPrice = (TextView) findViewById(R.id.venue_details_price);
-		txtRating = (TextView) findViewById(R.id.venue_details_rating);
+		txtName = (TextView) findViewById(R.id.place_details_name);
+		txtCategory = (TextView) findViewById(R.id.place_details_type);
+		txtLocation = (TextView) findViewById(R.id.place_details_location);
+		txtDescription = (TextView) findViewById(R.id.place_details_description);
+		txtUrl = (TextView) findViewById(R.id.place_details_url);
+		txtStatus = (TextView) findViewById(R.id.place_details_hours);
+		txtPrice = (TextView) findViewById(R.id.place_details_price);
+		txtRating = (TextView) findViewById(R.id.place_details_rating);
 		btnGoTo = (Button) findViewById(R.id.venue_details_goto);
 	}
 

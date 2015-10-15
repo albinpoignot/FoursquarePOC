@@ -56,7 +56,7 @@ public class NearestVenuesAdapter extends BaseAdapter
 
         if (convertView == null)
         {
-            convertView = inflater.inflate(R.layout.list_item_compact_venue, null);
+            convertView = inflater.inflate(R.layout.list_item_light_place, null);
 
             holder = new ViewHolder();
             holder.txtName = (TextView) convertView.findViewById(R.id.venue_name);

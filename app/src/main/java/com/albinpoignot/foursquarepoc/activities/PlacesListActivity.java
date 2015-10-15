@@ -22,7 +22,7 @@ public class PlacesListActivity extends ListActivity implements SearchPlacesServ
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_venues_list);
+        setContentView(R.layout.activity_places_list);
 
         adapter = new NearestVenuesAdapter(this);
         setListAdapter(adapter);
