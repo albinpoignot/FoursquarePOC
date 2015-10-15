@@ -7,4 +7,6 @@
     <string name="activity_details_hours">Horaires d\'ouverture</string>
     <string name="activity_details_price">Prix</string>
     <string name="activity_details_rating">Note</string>
+    <string name="activity_details_na">-</string>
+    <string name="activity_details_goto">S\'y rendre</string>
 </resources>

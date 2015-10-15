@@ -103,6 +103,8 @@ public class EntityAdapter
 		location.setDistance(foursquareLocation.getDistance());
 		location.setPostalCode(foursquareLocation.getPostalCode());
 		location.setState(foursquareLocation.getState());
+		location.setLatitude(foursquareLocation.getLat());
+		location.setLongitude(foursquareLocation.getLng());
 
 		return location;
 	}

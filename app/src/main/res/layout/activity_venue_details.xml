@@ -1,95 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical"
               android:paddingBottom="@dimen/activity_vertical_margin"
               android:paddingTop="@dimen/activity_vertical_margin"
               android:paddingLeft="@dimen/activity_horizontal_margin"
               android:paddingRight="@dimen/activity_horizontal_margin">
 
-    <TextView
-        android:id="@+id/venue_details_name"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:text="Name"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/venue_details_goto">
 
-    <TextView
-        android:id="@+id/venue_details_type"
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/venue_details_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                tools:text="Name"/>
+
+            <TextView
+                android:id="@+id/venue_details_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                tools:text="French restaurant"/>
+
+            <TextView
+                android:id="@+id/venue_details_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:drawableLeft="@drawable/ic_room_black_24dp"
+                android:drawableStart="@drawable/ic_room_black_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                tools:text="Location"/>
+
+            <TextView
+                android:id="@+id/venue_details_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                tools:text="Description description description description"/>
+
+            <TextView
+                android:id="@+id/venue_details_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:autoLink="web"
+                tools:text="http://www.google.fr"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginBottom="5dp"
+                android:text="@string/activity_details_hours"/>
+
+            <TextView
+                android:id="@+id/venue_details_hours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                tools:text="Currently open"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginBottom="5dp"
+                android:text="@string/activity_details_price"/>
+
+            <TextView
+                android:id="@+id/venue_details_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                tools:text="10$ - 20$"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginBottom="5dp"
+                android:text="@string/activity_details_rating"/>
+
+            <TextView
+                android:id="@+id/venue_details_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="* * *"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/venue_details_goto"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        tools:text="French restaurant"/>
+        android:layout_alignParentBottom="true"
+        android:text="@string/activity_details_goto"
+        />
 
-    <TextView
-        android:id="@+id/venue_details_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:drawableLeft="@drawable/ic_room_black_24dp"
-        android:drawableStart="@drawable/ic_room_black_24dp"
-        android:drawablePadding="5dp"
-        android:gravity="center_vertical"
-        tools:text="Location"/>
-
-    <TextView
-        android:id="@+id/venue_details_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        tools:text="Description qsdqsfd sglsmdjf qsmldfjk zopefsmdlk sfmiogzmlekg sdf354s s65d4gsdf qsdlkj oqziufsd"/>
-
-    <TextView
-        android:id="@+id/venue_details_url"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        tools:text="http://www.google.fr"
-        android:autoLink="web"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_marginBottom="5dp"
-        android:text="@string/activity_details_hours"/>
-
-    <TextView
-        android:id="@+id/venue_details_hours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        tools:text="Currently open"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_marginBottom="5dp"
-        android:text="@string/activity_details_price"/>
-
-    <TextView
-        android:id="@+id/venue_details_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        tools:text="10$ - 20$"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_marginBottom="5dp"
-        android:text="@string/activity_details_rating"/>
-
-    <TextView
-        android:id="@+id/venue_details_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="* * *"/>
-
-</LinearLayout>
+</RelativeLayout>

@@ -1,52 +1,30 @@
 package com.albinpoignot.foursquarepoc.models;
 
-import java.util.List;
-
 /**
  * Created by Albin on 14/10/2015.
  */
-public class Location {
+public class Location
+{
 
-    private String address;
+	private String address;
 
-    private Integer distance;
+	private Integer distance;
 
-    private String postalCode;
+	private String postalCode;
 
-    private String city;
+	private String city;
 
-    private String state;
+	private String state;
 
-    private String country;
+	private String country;
+
+	private Float longitude;
+
+	private Float latitude;
 
 	public String getAddress()
 	{
 		return address;
-	}
-
-	public void setAddress(String address)
-	{
-		this.address = address;
-	}
-
-	public Integer getDistance()
-	{
-		return distance;
-	}
-
-	public void setDistance(Integer distance)
-	{
-		this.distance = distance;
-	}
-
-	public String getPostalCode()
-	{
-		return postalCode;
-	}
-
-	public void setPostalCode(String postalCode)
-	{
-		this.postalCode = postalCode;
 	}
 
 	public String getCity()
@@ -54,9 +32,29 @@ public class Location {
 		return city;
 	}
 
-	public void setCity(String city)
+	public String getCountry()
 	{
-		this.city = city;
+		return country;
+	}
+
+	public Integer getDistance()
+	{
+		return distance;
+	}
+
+	public Float getLatitude()
+	{
+		return latitude;
+	}
+
+	public Float getLongitude()
+	{
+		return longitude;
+	}
+
+	public String getPostalCode()
+	{
+		return postalCode;
 	}
 
 	public String getState()
@@ -64,18 +62,43 @@ public class Location {
 		return state;
 	}
 
-	public void setState(String state)
+	public void setAddress(String address)
 	{
-		this.state = state;
+		this.address = address;
 	}
 
-	public String getCountry()
+	public void setCity(String city)
 	{
-		return country;
+		this.city = city;
 	}
 
 	public void setCountry(String country)
 	{
 		this.country = country;
+	}
+
+	public void setDistance(Integer distance)
+	{
+		this.distance = distance;
+	}
+
+	public void setLatitude(Float latitude)
+	{
+		this.latitude = latitude;
+	}
+
+	public void setLongitude(Float longitude)
+	{
+		this.longitude = longitude;
+	}
+
+	public void setPostalCode(String postalCode)
+	{
+		this.postalCode = postalCode;
+	}
+
+	public void setState(String state)
+	{
+		this.state = state;
 	}
 }
