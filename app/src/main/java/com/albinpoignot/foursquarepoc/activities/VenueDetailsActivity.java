@@ -85,8 +85,15 @@ public class VenueDetailsActivity extends Activity implements GetVenuesListener
 				txtLocation.setText(currentVenue.getLocation().getAddress());
 			}
 
-			txtDescription.setText(currentVenue.getDescription());
-			txtUrl.setText(currentVenue.getUrl());
+			if(currentVenue.getDescription() != null)
+			{
+				txtDescription.setText(currentVenue.getDescription());
+			}
+
+			if(currentVenue.getUrl() != null)
+			{
+				txtUrl.setText(currentVenue.getUrl());
+			}
 
 			if(currentVenue.getHours() != null)
 			{
@@ -95,10 +102,13 @@ public class VenueDetailsActivity extends Activity implements GetVenuesListener
 
 			if(currentVenue.getPrice() != null)
 			{
-				txtPrice.setText(currentVenue.getPrice());
+				txtPrice.setText(currentVenue.getPrice().getMessage());
 			}
 
-			txtRating.setText(String.format("%f", currentVenue.getRating()));
+			if(currentVenue.getRating() != null)
+			{
+				txtRating.setText(String.format("%.1f", currentVenue.getRating()));
+			}
 		}
 	}
 }

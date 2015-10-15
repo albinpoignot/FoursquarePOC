@@ -11,7 +11,7 @@ public class Venue extends CompactVenue
 
     private Hour hours;
 
-    private Integer price;
+    private Price price;
 
     private Float rating;
 
@@ -45,12 +45,12 @@ public class Venue extends CompactVenue
         this.hours = hours;
     }
 
-    public Integer getPrice()
+    public Price getPrice()
     {
         return price;
     }
 
-    public void setPrice(Integer price)
+    public void setPrice(Price price)
     {
         this.price = price;
     }
