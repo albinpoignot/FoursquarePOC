@@ -7,13 +7,13 @@ import java.util.List;
  */
 public class CompactVenue
 {
-    private String id;
+    protected String id;
 
-    private String name;
+	protected String name;
 
-    private Location location;
+	protected Location location;
 
-    private List<Category> categories;
+	protected List<Category> categories;
 
     public String getId()
     {

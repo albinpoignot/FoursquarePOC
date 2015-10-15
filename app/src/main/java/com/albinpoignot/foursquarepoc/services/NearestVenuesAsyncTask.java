@@ -39,7 +39,9 @@ public class NearestVenuesAsyncTask extends AsyncTask<String, Void, List<Compact
             address = "";
         }
 
-        VenueSearchResponseContent venueSearchResponseContent = venueClient.searchNearestVenues(address, 10).getResponseField();
+		String categoryId = "4d4b7105d754a06374d81259";
+
+        VenueSearchResponseContent venueSearchResponseContent = venueClient.searchNearestVenues(address, 10, categoryId).getResponseField();
         return venueSearchResponseContent.getCompactVenues();
     }
 

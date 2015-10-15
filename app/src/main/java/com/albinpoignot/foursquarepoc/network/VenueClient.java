@@ -16,7 +16,7 @@ public interface VenueClient
 {
 
     @GET("/venues/search")
-    FoursquareResponse<VenueSearchResponseContent> searchNearestVenues(@Query("near")String near, @Query("limit")Integer limit);
+    FoursquareResponse<VenueSearchResponseContent> searchNearestVenues(@Query("near")String near, @Query("limit")Integer limit, @Query("categoryId")String categoryId);
 
     @GET("/venues/{id}")
     FoursquareResponse<VenueResponseContent> getVenue(@Path("id")String id);
