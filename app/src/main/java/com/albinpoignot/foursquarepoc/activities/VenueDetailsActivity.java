@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.albinpoignot.foursquarepoc.R;
 import com.albinpoignot.foursquarepoc.models.Venue;
-import com.albinpoignot.foursquarepoc.network.GetVenuesListener;
+import com.albinpoignot.foursquarepoc.network.listeners.GetVenuesListener;
 import com.albinpoignot.foursquarepoc.services.VenueAsyncTask;
 
 /**

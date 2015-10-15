@@ -1,4 +1,4 @@
-package com.albinpoignot.foursquarepoc.network;
+package com.albinpoignot.foursquarepoc.network.listeners;
 
 import com.albinpoignot.foursquarepoc.models.CompactVenue;
 

@@ -4,8 +4,8 @@ import android.os.AsyncTask;
 
 import com.albinpoignot.foursquarepoc.models.Venue;
 import com.albinpoignot.foursquarepoc.network.FoursquareServiceGenerator;
-import com.albinpoignot.foursquarepoc.network.GetVenuesListener;
-import com.albinpoignot.foursquarepoc.network.VenueClient;
+import com.albinpoignot.foursquarepoc.network.listeners.GetVenuesListener;
+import com.albinpoignot.foursquarepoc.network.clients.VenueClient;
 import com.albinpoignot.foursquarepoc.network.entities.VenueResponseContent;
 
 

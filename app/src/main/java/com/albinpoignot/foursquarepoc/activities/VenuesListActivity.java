@@ -9,7 +9,7 @@ import android.widget.ListView;
 import com.albinpoignot.foursquarepoc.R;
 import com.albinpoignot.foursquarepoc.adapters.NearestVenuesAdapter;
 import com.albinpoignot.foursquarepoc.models.CompactVenue;
-import com.albinpoignot.foursquarepoc.network.NearestVenuesListener;
+import com.albinpoignot.foursquarepoc.network.listeners.NearestVenuesListener;
 import com.albinpoignot.foursquarepoc.services.NearestVenuesAsyncTask;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.albinpoignot.foursquarepoc.network;
+package com.albinpoignot.foursquarepoc.network.clients;
 
 import com.albinpoignot.foursquarepoc.network.entities.FoursquareResponse;
 import com.albinpoignot.foursquarepoc.network.entities.VenueResponseContent;
