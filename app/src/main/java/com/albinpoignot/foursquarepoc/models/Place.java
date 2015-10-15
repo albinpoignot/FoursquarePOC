@@ -5,44 +5,26 @@ package com.albinpoignot.foursquarepoc.models;
  */
 public class Place extends LightPlace
 {
-    private String description;
+	private String description;
 
-    private String url;
+	private String url;
 
-    private String status;
+	private String status;
 
-    private String price;
+	private String price;
 
-    private Float rating;
+	private Float rating;
+
+	private String pictureUrl;
 
 	public String getDescription()
 	{
 		return description;
 	}
 
-	public void setDescription(String description)
+	public String getPictureUrl()
 	{
-		this.description = description;
-	}
-
-	public String getUrl()
-	{
-		return url;
-	}
-
-	public void setUrl(String url)
-	{
-		this.url = url;
-	}
-
-	public String getStatus()
-	{
-		return status;
-	}
-
-	public void setStatus(String status)
-	{
-		this.status = status;
+		return pictureUrl;
 	}
 
 	public String getPrice()
@@ -50,18 +32,48 @@ public class Place extends LightPlace
 		return price;
 	}
 
-	public void setPrice(String price)
-	{
-		this.price = price;
-	}
-
 	public Float getRating()
 	{
 		return rating;
 	}
 
+	public String getStatus()
+	{
+		return status;
+	}
+
+	public String getUrl()
+	{
+		return url;
+	}
+
+	public void setDescription(String description)
+	{
+		this.description = description;
+	}
+
+	public void setPictureUrl(String pictureUrl)
+	{
+		this.pictureUrl = pictureUrl;
+	}
+
+	public void setPrice(String price)
+	{
+		this.price = price;
+	}
+
 	public void setRating(Float rating)
 	{
 		this.rating = rating;
+	}
+
+	public void setStatus(String status)
+	{
+		this.status = status;
+	}
+
+	public void setUrl(String url)
+	{
+		this.url = url;
 	}
 }

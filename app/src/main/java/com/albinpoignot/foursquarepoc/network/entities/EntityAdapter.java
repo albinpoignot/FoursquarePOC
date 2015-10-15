@@ -12,6 +12,8 @@ import java.util.List;
  */
 public class EntityAdapter
 {
+	public static final String VENUE_PICTURE_SIZE = "300x300";
+
 	private EntityAdapter() { }
 
 	public static List<LightPlace> adapt(List<FoursquareCompactVenue> foursquareCompactVenues)
@@ -90,6 +92,25 @@ public class EntityAdapter
 		place.setStatus(statusToUse);
 
 		place.setUrl(foursquareVenue.getUrl());
+
+		if(foursquareVenue.getPhotos() != null)
+		{
+			FoursquarePhotos photos = foursquareVenue.getPhotos();
+			if(photos.getGroups() != null && photos.getGroups().size() > 0)
+			{
+				FoursquareGroup group = photos.getGroups().get(0);
+
+				if(group.getItems() != null && group.getItems().size() > 0)
+				{
+					FoursquarePhotoItem photoItem = group.getItems().get(0);
+					photoItem.getPrefix();
+
+					String url = photoItem.getPrefix() + VENUE_PICTURE_SIZE + photoItem.getSuffix();
+					place.setPictureUrl(url);
+
+				}
+			}
+		}
 
 		return place;
 	}

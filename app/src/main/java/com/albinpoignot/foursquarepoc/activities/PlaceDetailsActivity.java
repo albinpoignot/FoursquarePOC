@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import com.albinpoignot.foursquarepoc.R;
 import com.albinpoignot.foursquarepoc.models.Place;
 import com.albinpoignot.foursquarepoc.network.listeners.GetPlaceListener;
 import com.albinpoignot.foursquarepoc.services.GetPlaceService;
+import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
 
@@ -43,6 +45,8 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 
 	private Button btnGoTo;
 
+	private ImageView imgPhoto;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -57,7 +61,8 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 		txtStatus = (TextView) findViewById(R.id.place_details_hours);
 		txtPrice = (TextView) findViewById(R.id.place_details_price);
 		txtRating = (TextView) findViewById(R.id.place_details_rating);
-		btnGoTo = (Button) findViewById(R.id.venue_details_goto);
+		btnGoTo = (Button) findViewById(R.id.place_details_goto);
+		imgPhoto = (ImageView) findViewById(R.id.place_details_photo);
 	}
 
 	@Override
@@ -190,6 +195,12 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 			txtPrice.setText(priceValue);
 			txtRating.setText(ratingValue);
 
+			if(currentPlace.getPictureUrl() != null && !currentPlace.getPictureUrl().isEmpty())
+			{
+				Picasso.with(this)
+						.load(currentPlace.getPictureUrl())
+						.into(imgPhoto);
+			}
 		}
 	}
 }

@@ -1,67 +1,81 @@
 package com.albinpoignot.foursquarepoc.network.entities;
 
+import java.util.List;
+
 /**
  * Created by Albin on 14/10/2015.
  */
 public class FoursquareVenue extends FoursquareCompactVenue
 {
-    private String description;
+	private String description;
 
-    private String url;
+	private String url;
 
-    private FoursquareHour hours;
+	private FoursquareHour hours;
 
-    private FoursquarePrice price;
+	private FoursquarePrice price;
 
-    private Float rating;
+	private Float rating;
 
-    public String getDescription()
-    {
-        return description;
-    }
+	private FoursquarePhotos photos;
 
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
+	public String getDescription()
+	{
+		return description;
+	}
 
-    public String getUrl()
-    {
-        return url;
-    }
+	public FoursquareHour getHours()
+	{
+		return hours;
+	}
 
-    public void setUrl(String url)
-    {
-        this.url = url;
-    }
+	public FoursquarePhotos getPhotos()
+	{
+		return photos;
+	}
 
-    public FoursquareHour getHours()
-    {
-        return hours;
-    }
+	public FoursquarePrice getPrice()
+	{
+		return price;
+	}
 
-    public void setHours(FoursquareHour hours)
-    {
-        this.hours = hours;
-    }
+	public Float getRating()
+	{
+		return rating;
+	}
 
-    public FoursquarePrice getPrice()
-    {
-        return price;
-    }
+	public String getUrl()
+	{
+		return url;
+	}
 
-    public void setPrice(FoursquarePrice price)
-    {
-        this.price = price;
-    }
+	public void setDescription(String description)
+	{
+		this.description = description;
+	}
 
-    public Float getRating()
-    {
-        return rating;
-    }
+	public void setHours(FoursquareHour hours)
+	{
+		this.hours = hours;
+	}
 
-    public void setRating(Float rating)
-    {
-        this.rating = rating;
-    }
+	public void setPhotos(FoursquarePhotos photos)
+	{
+		this.photos = photos;
+	}
+
+	public void setPrice(FoursquarePrice price)
+	{
+		this.price = price;
+	}
+
+	public void setRating(Float rating)
+	{
+		this.rating = rating;
+	}
+
+	public void setUrl(String url)
+	{
+		this.url = url;
+	}
 }

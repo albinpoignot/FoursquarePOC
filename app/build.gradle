@@ -27,6 +27,10 @@ dependencies {
     // Retrofit : REST client
     compile 'com.squareup.retrofit:retrofit:1.9.0'
 
-    // OKHttp : ensure using this library for HTTP  requests
+    // OKHttp : HTTP client
     compile 'com.squareup.okhttp:okhttp:2.2.0'
+
+    // Picasso : loading and caching pictures
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
 }
