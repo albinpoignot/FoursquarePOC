@@ -5,7 +5,7 @@ import com.albinpoignot.foursquarepoc.models.Place;
 /**
  * Created by Albin on 15/10/2015.
  */
-public interface GetVenuesListener
+public interface GetPlaceListener extends GenericServiceListener
 {
-    void onVenueReceived(Place venue);
+    void onPlaceReceived(Place place);
 }

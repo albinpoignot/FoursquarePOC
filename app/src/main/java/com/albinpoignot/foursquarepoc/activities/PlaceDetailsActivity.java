@@ -4,27 +4,34 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.albinpoignot.foursquarepoc.R;
 import com.albinpoignot.foursquarepoc.models.Place;
-import com.albinpoignot.foursquarepoc.network.listeners.GetVenuesListener;
-import com.albinpoignot.foursquarepoc.services.PlaceAsyncTask;
+import com.albinpoignot.foursquarepoc.network.listeners.GetPlaceListener;
+import com.albinpoignot.foursquarepoc.services.GetPlaceService;
 
 /**
  * Created by Albin POIGNOT on 15/10/15.
  */
-public class PlaceDetailsActivity extends Activity implements GetVenuesListener
+public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 {
 	public static final String VENUE_ID_TAG = "PlaceDetailsActivity.venueId";
 
-	private Place currentVenue;
+	private Place currentPlace;
 
 	private TextView txtName;
+
 	private TextView txtLocation;
+
 	private TextView txtDescription;
+
 	private TextView txtUrl;
+
 	private TextView txtHours;
+
 	private TextView txtPrice;
+
 	private TextView txtRating;
 
 	@Override
@@ -33,13 +40,27 @@ public class PlaceDetailsActivity extends Activity implements GetVenuesListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_venue_details);
 
-		txtName = (TextView)findViewById(R.id.venue_details_name);
-		txtLocation = (TextView)findViewById(R.id.venue_details_location);
-		txtDescription = (TextView)findViewById(R.id.venue_details_description);
-		txtUrl = (TextView)findViewById(R.id.venue_details_url);
-		txtHours = (TextView)findViewById(R.id.venue_details_hours);
-		txtPrice = (TextView)findViewById(R.id.venue_details_price);
-		txtRating = (TextView)findViewById(R.id.venue_details_rating);
+		txtName = (TextView) findViewById(R.id.venue_details_name);
+		txtLocation = (TextView) findViewById(R.id.venue_details_location);
+		txtDescription = (TextView) findViewById(R.id.venue_details_description);
+		txtUrl = (TextView) findViewById(R.id.venue_details_url);
+		txtHours = (TextView) findViewById(R.id.venue_details_hours);
+		txtPrice = (TextView) findViewById(R.id.venue_details_price);
+		txtRating = (TextView) findViewById(R.id.venue_details_rating);
+	}
+
+	@Override
+	public void onError(Integer resId)
+	{
+		Toast.makeText(this, resId, Toast.LENGTH_LONG).show();
+		finish();
+	}
+
+	@Override
+	public void onPlaceReceived(Place place)
+	{
+		currentPlace = place;
+		setViewsContent();
 	}
 
 	@Override
@@ -47,67 +68,60 @@ public class PlaceDetailsActivity extends Activity implements GetVenuesListener
 	{
 		super.onResume();
 
-		if(currentVenue != null)
+		if (currentPlace != null)
 		{
 			setViewsContent();
 		}
 		else
 		{
 			Intent intent = getIntent();
-			if(intent != null)
+			if (intent != null)
 			{
-				String currentVenueId = intent.getStringExtra(VENUE_ID_TAG);
+				String currentPlaceId = intent.getStringExtra(VENUE_ID_TAG);
 
-				PlaceAsyncTask asyncTask = new PlaceAsyncTask(this);
-				asyncTask.execute(currentVenueId);
+				GetPlaceService getPlaceService = new GetPlaceService(this);
+				getPlaceService.getPlace(currentPlaceId);
 			}
 		}
 	}
 
-	@Override
-	public void onVenueReceived(Place venue)
-	{
-		currentVenue = venue;
-		setViewsContent();
-	}
-
 	private void setViewsContent()
 	{
-		if(currentVenue != null)
+		if (currentPlace != null)
 		{
-			if(currentVenue.getName() != null)
+			if (currentPlace.getName() != null)
 			{
-				txtName.setText(currentVenue.getName());
+				txtName.setText(currentPlace.getName());
 			}
 
-			if(currentVenue.getLocation() != null)
+			if (currentPlace.getLocation() != null)
 			{
-				txtLocation.setText(currentVenue.getLocation().getAddress());
+				txtLocation.setText(currentPlace.getLocation().getAddress());
 			}
 
-			if(currentVenue.getDescription() != null)
+			if (currentPlace.getDescription() != null)
 			{
-				txtDescription.setText(currentVenue.getDescription());
+				txtDescription.setText(currentPlace.getDescription());
 			}
 
-			if(currentVenue.getUrl() != null)
+			if (currentPlace.getUrl() != null)
 			{
-				txtUrl.setText(currentVenue.getUrl());
+				txtUrl.setText(currentPlace.getUrl());
 			}
 
-			if(currentVenue.getStatus() != null)
+			if (currentPlace.getStatus() != null)
 			{
-				txtHours.setText(currentVenue.getStatus());
+				txtHours.setText(currentPlace.getStatus());
 			}
 
-			if(currentVenue.getPrice() != null)
+			if (currentPlace.getPrice() != null)
 			{
-				txtPrice.setText(currentVenue.getPrice());
+				txtPrice.setText(currentPlace.getPrice());
 			}
 
-			if(currentVenue.getRating() != null)
+			if (currentPlace.getRating() != null)
 			{
-				txtRating.setText(String.format("%.1f", currentVenue.getRating()));
+				txtRating.setText(String.format("%.1f", currentPlace.getRating()));
 			}
 		}
 	}

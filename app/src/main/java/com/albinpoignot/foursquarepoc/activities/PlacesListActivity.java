@@ -5,16 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.albinpoignot.foursquarepoc.R;
 import com.albinpoignot.foursquarepoc.adapters.NearestVenuesAdapter;
 import com.albinpoignot.foursquarepoc.models.LightPlace;
-import com.albinpoignot.foursquarepoc.network.listeners.NearestVenuesListener;
-import com.albinpoignot.foursquarepoc.services.NearestPlacesAsyncTask;
+import com.albinpoignot.foursquarepoc.network.listeners.SearchPlacesServiceListener;
+import com.albinpoignot.foursquarepoc.services.SearchPlacesService;
 
 import java.util.List;
 
-public class PlacesListActivity extends ListActivity implements NearestVenuesListener
+public class PlacesListActivity extends ListActivity implements SearchPlacesServiceListener
 {
     private NearestVenuesAdapter adapter;
 
@@ -26,9 +27,8 @@ public class PlacesListActivity extends ListActivity implements NearestVenuesLis
         adapter = new NearestVenuesAdapter(this);
         setListAdapter(adapter);
 
-		NearestPlacesAsyncTask asyncTask = new NearestPlacesAsyncTask(this);
-		//asyncTask.execute("7248 Rue Saint-Urbain, Montréal, Canada");
-		asyncTask.execute("45.533887, -73.620208");
+		SearchPlacesService searchPlacesService = new SearchPlacesService(this);
+		searchPlacesService.getNearestFoodPlaces("45.533887, -73.620208");
     }
 
 	@Override
@@ -43,9 +43,16 @@ public class PlacesListActivity extends ListActivity implements NearestVenuesLis
 		startActivity(intent);
 	}
 
+
 	@Override
-    public void onNearestVenuesReceived(List<LightPlace> lightPlaceList)
-    {
-        adapter.setLightPlaces(lightPlaceList);
-    }
+	public void onPlacesReceived(List<LightPlace> lightPlaceList)
+	{
+		adapter.setLightPlaces(lightPlaceList);
+	}
+
+	@Override
+	public void onError(Integer resId)
+	{
+		Toast.makeText(this, resId, Toast.LENGTH_LONG).show();
+	}
 }
