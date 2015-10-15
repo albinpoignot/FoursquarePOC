@@ -22,6 +22,8 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 
 	private TextView txtName;
 
+	private TextView txtCategory;
+
 	private TextView txtLocation;
 
 	private TextView txtDescription;
@@ -41,6 +43,7 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 		setContentView(R.layout.activity_venue_details);
 
 		txtName = (TextView) findViewById(R.id.venue_details_name);
+		txtCategory = (TextView) findViewById(R.id.venue_details_type);
 		txtLocation = (TextView) findViewById(R.id.venue_details_location);
 		txtDescription = (TextView) findViewById(R.id.venue_details_description);
 		txtUrl = (TextView) findViewById(R.id.venue_details_url);
@@ -92,6 +95,11 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 			if (currentPlace.getName() != null)
 			{
 				txtName.setText(currentPlace.getName());
+			}
+
+			if(currentPlace.getCategory() != null)
+			{
+				txtCategory.setText(currentPlace.getCategory());
 			}
 
 			if (currentPlace.getLocation() != null)

@@ -13,9 +13,16 @@
         android:id="@+id/venue_details_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="5dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         tools:text="Name"/>
+
+    <TextView
+        android:id="@+id/venue_details_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        tools:text="French restaurant"/>
 
     <TextView
         android:id="@+id/venue_details_location"
@@ -23,6 +30,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:drawableLeft="@drawable/ic_room_black_24dp"
+        android:drawableStart="@drawable/ic_room_black_24dp"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
         tools:text="Location"/>
 
     <TextView
@@ -36,29 +47,49 @@
         android:id="@+id/venue_details_url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
         tools:text="http://www.google.fr"
         android:autoLink="web"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginBottom="5dp"
+        android:text="@string/activity_details_hours"/>
 
     <TextView
         android:id="@+id/venue_details_hours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
         tools:text="Currently open"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginBottom="5dp"
+        android:text="@string/activity_details_price"/>
 
     <TextView
         android:id="@+id/venue_details_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
         tools:text="10$ - 20$"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginBottom="5dp"
+        android:text="@string/activity_details_rating"/>
 
     <TextView
         android:id="@+id/venue_details_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         tools:text="* * *"/>
 
 </LinearLayout>

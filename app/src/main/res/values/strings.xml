@@ -4,4 +4,7 @@
     <string name="network_no_connection">Pas de connexion au réseau.</string>
     <string name="network_unknown_error">Erreur inconnue.</string>
     <string name="place_not_found">Détails de l\'emplacement introuvable.</string>
+    <string name="activity_details_hours">Horaires d\'ouverture</string>
+    <string name="activity_details_price">Prix</string>
+    <string name="activity_details_rating">Note</string>
 </resources>
