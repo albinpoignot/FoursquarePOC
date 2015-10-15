@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FoursquarePOC</string>
+    <string name="app_name">Eat @ Koolicar</string>
     <string name="network_http_error">Impossible de récupérer les emplacements.</string>
     <string name="network_no_connection">Pas de connexion au réseau.</string>
     <string name="network_unknown_error">Erreur inconnue.</string>
