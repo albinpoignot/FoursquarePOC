@@ -1,5 +1,6 @@
 package com.albinpoignot.foursquarepoc.activities;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -63,6 +64,12 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 		txtRating = (TextView) findViewById(R.id.place_details_rating);
 		btnGoTo = (Button) findViewById(R.id.place_details_goto);
 		imgPhoto = (ImageView) findViewById(R.id.place_details_photo);
+
+		ActionBar actionBar = getActionBar();
+		if(actionBar != null)
+		{
+			actionBar.setDisplayHomeAsUpEnabled(true);
+		}
 	}
 
 	@Override
