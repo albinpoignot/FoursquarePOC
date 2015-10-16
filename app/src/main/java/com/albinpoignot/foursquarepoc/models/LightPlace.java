@@ -1,18 +1,29 @@
 package com.albinpoignot.foursquarepoc.models;
 
-import java.util.List;
-
 /**
+ * Entity storing basic information about a place.
  * Created by Albin on 14/10/2015.
  */
 public class LightPlace
 {
+	/**
+	 * The ID of the place
+	 */
     protected String id;
 
+	/**
+	 * The name of the place
+	 */
 	protected String name;
 
+	/**
+	 * The location of the place
+	 */
 	protected Location location;
 
+	/**
+	 * The category of the place
+	 */
 	protected String category;
 
 	public String getId()

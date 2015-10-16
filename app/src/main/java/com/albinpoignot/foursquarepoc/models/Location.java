@@ -1,104 +1,99 @@
 package com.albinpoignot.foursquarepoc.models;
 
 /**
+ * Entity storing information about location of a place
  * Created by Albin on 14/10/2015.
  */
 public class Location
 {
 
-	private String address;
+    /**
+     * The address of the place
+     */
+    private String address;
 
-	private Integer distance;
+    /**
+     * The distance of the place from the original given point
+     */
+    private Integer distance;
 
-	private String postalCode;
+    /**
+     * The city of the place
+     */
+    private String city;
 
-	private String city;
+    /**
+     * The country of the place
+     */
+    private String country;
 
-	private String state;
+    /**
+     * The longitude of the place
+     */
+    private Float longitude;
 
-	private String country;
+    /**
+     * The latitude of the place
+     */
+    private Float latitude;
 
-	private Float longitude;
+    public String getAddress()
+    {
+        return address;
+    }
 
-	private Float latitude;
+    public String getCity()
+    {
+        return city;
+    }
 
-	public String getAddress()
-	{
-		return address;
-	}
+    public String getCountry()
+    {
+        return country;
+    }
 
-	public String getCity()
-	{
-		return city;
-	}
+    public Integer getDistance()
+    {
+        return distance;
+    }
 
-	public String getCountry()
-	{
-		return country;
-	}
+    public Float getLatitude()
+    {
+        return latitude;
+    }
 
-	public Integer getDistance()
-	{
-		return distance;
-	}
+    public Float getLongitude()
+    {
+        return longitude;
+    }
 
-	public Float getLatitude()
-	{
-		return latitude;
-	}
+    public void setAddress(String address)
+    {
+        this.address = address;
+    }
 
-	public Float getLongitude()
-	{
-		return longitude;
-	}
+    public void setCity(String city)
+    {
+        this.city = city;
+    }
 
-	public String getPostalCode()
-	{
-		return postalCode;
-	}
+    public void setCountry(String country)
+    {
+        this.country = country;
+    }
 
-	public String getState()
-	{
-		return state;
-	}
+    public void setDistance(Integer distance)
+    {
+        this.distance = distance;
+    }
 
-	public void setAddress(String address)
-	{
-		this.address = address;
-	}
+    public void setLatitude(Float latitude)
+    {
+        this.latitude = latitude;
+    }
 
-	public void setCity(String city)
-	{
-		this.city = city;
-	}
-
-	public void setCountry(String country)
-	{
-		this.country = country;
-	}
-
-	public void setDistance(Integer distance)
-	{
-		this.distance = distance;
-	}
-
-	public void setLatitude(Float latitude)
-	{
-		this.latitude = latitude;
-	}
-
-	public void setLongitude(Float longitude)
-	{
-		this.longitude = longitude;
-	}
-
-	public void setPostalCode(String postalCode)
-	{
-		this.postalCode = postalCode;
-	}
-
-	public void setState(String state)
-	{
-		this.state = state;
-	}
+    public void setLongitude(Float longitude)
+    {
+        this.longitude = longitude;
+    }
 }
