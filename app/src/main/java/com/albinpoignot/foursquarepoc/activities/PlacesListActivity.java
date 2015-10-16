@@ -8,27 +8,39 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.albinpoignot.foursquarepoc.R;
-import com.albinpoignot.foursquarepoc.adapters.NearestVenuesAdapter;
+import com.albinpoignot.foursquarepoc.adapters.PlacesListAdapter;
 import com.albinpoignot.foursquarepoc.models.LightPlace;
 import com.albinpoignot.foursquarepoc.network.listeners.SearchPlacesServiceListener;
 import com.albinpoignot.foursquarepoc.network.services.SearchPlacesService;
 
 import java.util.List;
 
+/**
+ * Activity showing a list of places
+ * Created by Albin POIGNOT on 15/10/15.
+ */
 public class PlacesListActivity extends ListActivity implements SearchPlacesServiceListener
 {
-    private NearestVenuesAdapter adapter;
+	/**
+	 * The address we are looking places around. Storing it here just in the context of this POC.
+	 */
+	private static final String ADDRESS = "45.533887, -73.620208";
+
+	/**
+	 * The list's adapter
+	 */
+    private PlacesListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places_list);
 
-        adapter = new NearestVenuesAdapter(this);
+        adapter = new PlacesListAdapter(this);
         setListAdapter(adapter);
 
 		SearchPlacesService searchPlacesService = new SearchPlacesService(this);
-		searchPlacesService.getNearestFoodPlaces("45.533887, -73.620208");
+		searchPlacesService.getNearestFoodPlaces(ADDRESS);
     }
 
 	@Override
@@ -36,10 +48,10 @@ public class PlacesListActivity extends ListActivity implements SearchPlacesServ
 	{
 		super.onListItemClick(l, v, position, id);
 
-		LightPlace venue = (LightPlace)adapter.getItem(position);
+		LightPlace place = (LightPlace)adapter.getItem(position);
 
 		Intent intent = new Intent(this, PlaceDetailsActivity.class);
-		intent.putExtra(PlaceDetailsActivity.VENUE_ID_TAG, venue.getId());
+		intent.putExtra(PlaceDetailsActivity.VENUE_ID_TAG, place.getId());
 		startActivity(intent);
 	}
 

@@ -16,12 +16,12 @@ import java.util.List;
 /**
  * Created by Albin on 14/10/2015.
  */
-public class NearestVenuesAdapter extends BaseAdapter
+public class PlacesListAdapter extends BaseAdapter
 {
     private LayoutInflater inflater;
     private List<LightPlace> lightPlaces;
 
-    public NearestVenuesAdapter(Context context)
+    public PlacesListAdapter(Context context)
     {
         this.inflater = LayoutInflater.from(context);
         this.lightPlaces = new ArrayList<>();
