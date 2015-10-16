@@ -83,6 +83,6 @@ public class SearchPlacesService extends BaseService implements Callback<Foursqu
     @Override
     public void failure(RetrofitError error)
     {
-        searchPlacesServiceListener.onError(getErrorResourceId(error.getKind()));
+        searchPlacesServiceListener.onError(getInternalError(error.getKind()));
     }
 }

@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,6 +17,7 @@ import com.albinpoignot.foursquarepoc.R;
 import com.albinpoignot.foursquarepoc.models.Place;
 import com.albinpoignot.foursquarepoc.network.listeners.GetPlaceListener;
 import com.albinpoignot.foursquarepoc.network.services.GetPlaceService;
+import com.albinpoignot.foursquarepoc.network.services.ServiceError;
 import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
@@ -148,8 +148,24 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
     }
 
     @Override
-    public void onError(Integer resId)
+    public void onError(ServiceError serviceError)
     {
+        Integer resId;
+        switch (serviceError)
+        {
+            case NETWORK_ERROR:
+                resId = R.string.service_error_http_error;
+                break;
+            case NO_NETWORK_ERROR:
+                resId = R.string.service_error_no_connection;
+                break;
+            case NOT_FOUND:
+                resId = R.string.service_error_not_found;
+                break;
+            default:
+                resId = R.string.service_error_unknown_error;
+                break;
+        }
         Toast.makeText(this, resId, Toast.LENGTH_LONG).show();
         finish();
     }

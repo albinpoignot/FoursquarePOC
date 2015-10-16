@@ -62,12 +62,12 @@ public class GetPlaceService extends BaseService implements Callback<FoursquareR
                 }
                 else
                 {
-                    getPlaceListener.onError(R.string.place_not_found);
+                    getPlaceListener.onError(ServiceError.NOT_FOUND);
                 }
             }
             else
             {
-                getPlaceListener.onError(R.string.place_not_found);
+                getPlaceListener.onError(ServiceError.NOT_FOUND);
             }
 
         }
@@ -76,6 +76,6 @@ public class GetPlaceService extends BaseService implements Callback<FoursquareR
     @Override
     public void failure(RetrofitError error)
     {
-        getPlaceListener.onError(getErrorResourceId(error.getKind()));
+        getPlaceListener.onError(getInternalError(error.getKind()));
     }
 }

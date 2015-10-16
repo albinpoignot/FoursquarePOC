@@ -11,26 +11,26 @@ import retrofit.RetrofitError;
 public abstract class BaseService
 {
     /**
-     * Returns an internal error depending of the HTTP error that occured
+     * Returns an internal error depending of the network error that occured
      *
      * @param kind the kind of error
-     * @return
+     * @return a ServiceError corresponding to the network error that occured
      */
-    protected Integer getErrorResourceId(RetrofitError.Kind kind)
+    protected ServiceError getInternalError(RetrofitError.Kind kind)
     {
-        Integer resId;
+        ServiceError error;
         if (kind == RetrofitError.Kind.HTTP)
         {
-            resId = R.string.network_http_error;
+            error = ServiceError.NETWORK_ERROR;
         }
         else if (kind == RetrofitError.Kind.NETWORK)
         {
-            resId = R.string.network_no_connection;
+            error = ServiceError.NO_NETWORK_ERROR;
         }
         else
         {
-            resId = R.string.network_unknown_error;
+            error = ServiceError.UNKNOWN;
         }
-        return resId;
+        return error;
     }
 }

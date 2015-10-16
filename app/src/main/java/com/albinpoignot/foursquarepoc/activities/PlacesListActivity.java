@@ -12,6 +12,7 @@ import com.albinpoignot.foursquarepoc.adapters.PlacesListAdapter;
 import com.albinpoignot.foursquarepoc.models.LightPlace;
 import com.albinpoignot.foursquarepoc.network.listeners.SearchPlacesServiceListener;
 import com.albinpoignot.foursquarepoc.network.services.SearchPlacesService;
+import com.albinpoignot.foursquarepoc.network.services.ServiceError;
 
 import java.util.List;
 
@@ -63,8 +64,21 @@ public class PlacesListActivity extends ListActivity implements SearchPlacesServ
 	}
 
 	@Override
-	public void onError(Integer resId)
+	public void onError(ServiceError serviceError)
 	{
+		Integer resId;
+		switch (serviceError)
+		{
+			case NETWORK_ERROR:
+				resId = R.string.service_error_http_error;
+				break;
+			case NO_NETWORK_ERROR:
+				resId = R.string.service_error_no_connection;
+				break;
+			default:
+				resId = R.string.service_error_unknown_error;
+				break;
+		}
 		Toast.makeText(this, resId, Toast.LENGTH_LONG).show();
 	}
 }

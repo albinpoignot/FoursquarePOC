@@ -1,5 +1,7 @@
 package com.albinpoignot.foursquarepoc.network.listeners;
 
+import com.albinpoignot.foursquarepoc.network.services.ServiceError;
+
 /**
  * Generic service listener. Only handle errors.
  * Created by Albin POIGNOT on 15/10/15.
@@ -7,9 +9,9 @@ package com.albinpoignot.foursquarepoc.network.listeners;
 public interface GenericServiceListener
 {
     /**
-     * Called when an error occured during a service's operation.
+     * Called when an error occurred during a service's operation.
      *
-     * @param resId the id of the String resources holding the message to display to the user
+     * @param serviceError the ServiceError that occurred
      */
-    void onError(Integer resId);
+    void onError(ServiceError serviceError);
 }

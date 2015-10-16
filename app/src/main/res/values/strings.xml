@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Manger à Montréal</string>
-    <string name="network_http_error">Impossible de récupérer les emplacements.</string>
-    <string name="network_no_connection">Pas de connexion au réseau.</string>
-    <string name="network_unknown_error">Erreur inconnue.</string>
+    <string name="app_details_title">Détails</string>
+    <string name="service_error_http_error">Impossible de récupérer les emplacements.</string>
+    <string name="service_error_no_connection">Pas de connexion au réseau.</string>
+    <string name="service_error_unknown_error">Erreur inconnue.</string>
+    <string name="service_error_not_found">Emplacement inconnu.</string>
     <string name="place_not_found">Détails de l\'emplacement introuvable.</string>
     <string name="activity_details_hours">Horaires d\'ouverture</string>
     <string name="activity_details_price">Prix</string>
