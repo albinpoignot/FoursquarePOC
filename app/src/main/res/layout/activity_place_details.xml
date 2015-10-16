@@ -35,7 +35,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/activity_details_na"
                 tools:text="Name"/>
 
             <TextView
@@ -43,7 +42,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:text="@string/activity_details_na"
                 tools:text="French restaurant"/>
 
             <TextView
@@ -56,7 +54,6 @@
                 android:drawableStart="@drawable/ic_room_black_24dp"
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical"
-                android:text="@string/activity_details_na"
                 tools:text="Location"/>
 
             <TextView
@@ -71,7 +68,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:text="@string/activity_details_na"
                 android:autoLink="web"
                 tools:text="http://www.google.fr"/>
 
@@ -87,7 +83,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:text="@string/activity_details_na"
                 tools:text="Currently open"/>
 
             <TextView
@@ -102,7 +97,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:text="@string/activity_details_na"
                 tools:text="10$ - 20$"/>
 
             <TextView
@@ -117,7 +111,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="@string/activity_details_na"
                 tools:text="* * *"/>
 
             <ImageView

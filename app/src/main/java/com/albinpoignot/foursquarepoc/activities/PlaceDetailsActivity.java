@@ -142,17 +142,19 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 	{
 		if (currentPlace != null)
 		{
-			if (currentPlace.getName() != null)
+			txtName.setText(currentPlace.getName());
+			txtCategory.setText(currentPlace.getCategory());
+			txtDescription.setText(currentPlace.getDescription());
+			txtUrl.setText(currentPlace.getUrl());
+			txtStatus.setText(currentPlace.getStatus());
+			txtPrice.setText(currentPlace.getPrice());
+
+			if(currentPlace.getRating() != null)
 			{
-				txtName.setText(currentPlace.getName());
+				txtRating.setText(String.format("%.1f", currentPlace.getRating()));
 			}
 
-			if(currentPlace.getCategory() != null)
-			{
-				txtCategory.setText(currentPlace.getCategory());
-			}
-
-			if (currentPlace.getLocation() != null && currentPlace.getLocation().getAddress() != null)
+			if (currentPlace.getLocation() != null)
 			{
 				txtLocation.setText(currentPlace.getLocation().getAddress());
 
@@ -164,31 +166,6 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 				{
 					btnGoTo.setClickable(false);
 				}
-			}
-
-			if (currentPlace.getDescription() != null)
-			{
-				txtDescription.setText(currentPlace.getDescription());
-			}
-
-			if (currentPlace.getUrl() != null)
-			{
-				txtUrl.setText(currentPlace.getUrl());
-			}
-
-			if (currentPlace.getStatus() != null)
-			{
-				txtStatus.setText(currentPlace.getStatus());
-			}
-
-			if (currentPlace.getPrice() != null)
-			{
-				txtPrice.setText(currentPlace.getPrice());
-			}
-
-			if (currentPlace.getRating() != null)
-			{
-				txtRating.setText(String.format("%.1f", currentPlace.getRating()));
 			}
 
 			if(currentPlace.getPictureUrl() != null)
