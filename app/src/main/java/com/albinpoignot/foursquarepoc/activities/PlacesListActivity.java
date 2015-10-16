@@ -11,7 +11,7 @@ import com.albinpoignot.foursquarepoc.R;
 import com.albinpoignot.foursquarepoc.adapters.NearestVenuesAdapter;
 import com.albinpoignot.foursquarepoc.models.LightPlace;
 import com.albinpoignot.foursquarepoc.network.listeners.SearchPlacesServiceListener;
-import com.albinpoignot.foursquarepoc.services.SearchPlacesService;
+import com.albinpoignot.foursquarepoc.network.services.SearchPlacesService;
 
 import java.util.List;
 

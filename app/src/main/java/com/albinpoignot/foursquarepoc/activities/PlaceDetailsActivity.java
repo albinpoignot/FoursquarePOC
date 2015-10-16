@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.albinpoignot.foursquarepoc.R;
 import com.albinpoignot.foursquarepoc.models.Place;
 import com.albinpoignot.foursquarepoc.network.listeners.GetPlaceListener;
-import com.albinpoignot.foursquarepoc.services.GetPlaceService;
+import com.albinpoignot.foursquarepoc.network.services.GetPlaceService;
 import com.squareup.picasso.Picasso;
 
 import java.util.Locale;

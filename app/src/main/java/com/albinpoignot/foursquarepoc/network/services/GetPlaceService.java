@@ -1,4 +1,4 @@
-package com.albinpoignot.foursquarepoc.services;
+package com.albinpoignot.foursquarepoc.network.services;
 
 import com.albinpoignot.foursquarepoc.R;
 import com.albinpoignot.foursquarepoc.models.Place;
