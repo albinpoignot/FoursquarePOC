@@ -73,9 +73,6 @@ public class FoursquareClientGenerator
                 .setEndpoint(BASE_URL)
                 .setClient(new OkClient(new OkHttpClient()));
 
-        // TODO Remove the logging of every requests
-        builder.setLogLevel(RestAdapter.LogLevel.FULL).setLog(new AndroidLog("Retrofit"));
-
         // Intercept every requests to add authentication and locale information
         builder.setRequestInterceptor(new RequestInterceptor()
         {
