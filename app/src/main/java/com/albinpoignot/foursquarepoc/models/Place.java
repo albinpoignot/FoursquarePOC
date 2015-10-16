@@ -1,20 +1,39 @@
 package com.albinpoignot.foursquarepoc.models;
 
 /**
+ * Entity storing full details about a place
  * Created by Albin on 14/10/2015.
  */
 public class Place extends LightPlace
 {
+	/**
+	 * The description of the place
+	 */
 	private String description;
 
+	/**
+	 * The URL of the place's web site
+	 */
 	private String url;
 
+	/**
+	 * The status of the place (open or close)
+	 */
 	private String status;
 
+	/**
+	 * The price range of the place
+	 */
 	private String price;
 
+	/**
+	 * The rating of the place
+	 */
 	private Float rating;
 
+	/**
+	 * The URL of picture about the place
+	 */
 	private String pictureUrl;
 
 	public String getDescription()

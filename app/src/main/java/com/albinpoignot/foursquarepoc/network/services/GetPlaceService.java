@@ -3,7 +3,7 @@ package com.albinpoignot.foursquarepoc.network.services;
 import com.albinpoignot.foursquarepoc.R;
 import com.albinpoignot.foursquarepoc.models.Place;
 import com.albinpoignot.foursquarepoc.network.FoursquareClientGenerator;
-import com.albinpoignot.foursquarepoc.network.clients.VenueClient;
+import com.albinpoignot.foursquarepoc.network.clients.FoursquareVenueClient;
 import com.albinpoignot.foursquarepoc.network.entities.EntityAdapter;
 import com.albinpoignot.foursquarepoc.network.entities.FoursquareResponse;
 import com.albinpoignot.foursquarepoc.network.entities.FoursquareVenue;
@@ -28,8 +28,8 @@ public class GetPlaceService extends BaseService implements Callback<FoursquareR
 
 	public void getPlace(String id)
 	{
-		VenueClient venueClient = FoursquareClientGenerator.createClient(VenueClient.class);
-		venueClient.getVenue(id, this);
+		FoursquareVenueClient foursquareVenueClient = FoursquareClientGenerator.createClient(FoursquareVenueClient.class);
+		foursquareVenueClient.getVenue(id, this);
 	}
 
 	@Override

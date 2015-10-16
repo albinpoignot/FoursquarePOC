@@ -2,7 +2,7 @@ package com.albinpoignot.foursquarepoc.network.services;
 
 import com.albinpoignot.foursquarepoc.models.LightPlace;
 import com.albinpoignot.foursquarepoc.network.FoursquareClientGenerator;
-import com.albinpoignot.foursquarepoc.network.clients.VenueClient;
+import com.albinpoignot.foursquarepoc.network.clients.FoursquareVenueClient;
 import com.albinpoignot.foursquarepoc.network.entities.EntityAdapter;
 import com.albinpoignot.foursquarepoc.network.entities.FoursquareCompactVenue;
 import com.albinpoignot.foursquarepoc.network.entities.FoursquareResponse;
@@ -32,8 +32,8 @@ public class SearchPlacesService extends BaseService implements Callback<Foursqu
 
 	public void getNearestFoodPlaces(String location)
 	{
-		VenueClient venueClient = FoursquareClientGenerator.createClient(VenueClient.class);
-		venueClient.searchNearestVenues(location, 10, CATEGORY_FOOD, this);
+		FoursquareVenueClient foursquareVenueClient = FoursquareClientGenerator.createClient(FoursquareVenueClient.class);
+		foursquareVenueClient.searchNearestVenues(location, 10, CATEGORY_FOOD, this);
 	}
 
 	@Override
