@@ -8,12 +8,21 @@
               android:paddingLeft="@dimen/activity_horizontal_margin"
               android:paddingRight="@dimen/activity_horizontal_margin">
 
+    <ProgressBar
+        android:id="@+id/place_details_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
     <ScrollView
+        android:id="@+id/place_details_content_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_above="@+id/place_details_goto"
-        android:layout_marginBottom="15dp">
+        android:layout_marginBottom="15dp"
+        android:visibility="gone"
+        tools:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/activity_details_na"
                 tools:text="Name"/>
 
             <TextView
@@ -33,6 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
+                android:text="@string/activity_details_na"
                 tools:text="French restaurant"/>
 
             <TextView
@@ -45,6 +56,7 @@
                 android:drawableStart="@drawable/ic_room_black_24dp"
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical"
+                android:text="@string/activity_details_na"
                 tools:text="Location"/>
 
             <TextView
@@ -52,6 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:text="@string/activity_details_na"
                 tools:text="Description description description description"/>
 
             <TextView
@@ -59,6 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
+                android:text="@string/activity_details_na"
                 android:autoLink="web"
                 tools:text="http://www.google.fr"/>
 
@@ -74,6 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
+                android:text="@string/activity_details_na"
                 tools:text="Currently open"/>
 
             <TextView
@@ -88,6 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
+                android:text="@string/activity_details_na"
                 tools:text="10$ - 20$"/>
 
             <TextView
@@ -102,6 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:text="@string/activity_details_na"
                 tools:text="* * *"/>
 
             <ImageView
@@ -122,6 +139,8 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
         android:textColor="@android:color/white"
-        android:text="@string/activity_details_goto" />
+        android:text="@string/activity_details_goto"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
 </RelativeLayout>

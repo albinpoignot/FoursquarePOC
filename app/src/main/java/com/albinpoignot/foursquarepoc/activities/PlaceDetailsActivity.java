@@ -5,9 +5,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +51,10 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 
 	private ImageView imgPhoto;
 
+	private ProgressBar progressBar;
+
+	private ViewGroup contentLayout;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -64,6 +71,8 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 		txtRating = (TextView) findViewById(R.id.place_details_rating);
 		btnGoTo = (Button) findViewById(R.id.place_details_goto);
 		imgPhoto = (ImageView) findViewById(R.id.place_details_photo);
+		progressBar = (ProgressBar) findViewById(R.id.place_details_progress);
+		contentLayout = (ViewGroup) findViewById(R.id.place_details_content_layout);
 
 		ActionBar actionBar = getActionBar();
 		if(actionBar != null)
@@ -102,6 +111,8 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 			{
 				String currentPlaceId = intent.getStringExtra(VENUE_ID_TAG);
 
+				hideContent();
+
 				GetPlaceService getPlaceService = new GetPlaceService(this);
 				getPlaceService.getPlace(currentPlaceId);
 			}
@@ -112,7 +123,7 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 			@Override
 			public void onClick(View v)
 			{
-				if(currentPlace != null && currentPlace.getLocation() != null)
+				if (currentPlace != null && currentPlace.getLocation() != null)
 				{
 					String address = currentPlace.getLocation().getAddress();
 					address = address.concat(currentPlace.getLocation().getCity());
@@ -131,31 +142,20 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 	{
 		if (currentPlace != null)
 		{
-			String naValue = getResources().getString(R.string.activity_details_na);
-
-			String nameValue = naValue;
-			String categoryValue = naValue;
-			String locationValue = naValue;
-			String descriptionValue = naValue;
-			String urlValue = naValue;
-			String statusValue = naValue;
-			String priceValue = naValue;
-			String ratingValue = naValue;
-
 			if (currentPlace.getName() != null && !currentPlace.getName().isEmpty())
 			{
-				nameValue = currentPlace.getName();
+				txtName.setText(currentPlace.getName());
 			}
 
 			if(currentPlace.getCategory() != null && !currentPlace.getCategory().isEmpty())
 			{
-				categoryValue = currentPlace.getCategory();
+				txtCategory.setText(currentPlace.getCategory());
 			}
 
 			if (currentPlace.getLocation() != null && currentPlace.getLocation().getAddress() != null
 					&& !currentPlace.getLocation().getAddress().isEmpty())
 			{
-				locationValue = currentPlace.getLocation().getAddress();
+				txtLocation.setText(currentPlace.getLocation().getAddress());
 
 				if(currentPlace.getLocation().getLatitude() != null && currentPlace.getLocation().getLongitude() != null)
 				{
@@ -169,38 +169,28 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 
 			if (currentPlace.getDescription() != null && !currentPlace.getDescription().isEmpty())
 			{
-				descriptionValue = currentPlace.getDescription();
+				txtDescription.setText(currentPlace.getDescription());
 			}
 
 			if (currentPlace.getUrl() != null && !currentPlace.getUrl().isEmpty())
 			{
-				urlValue = currentPlace.getUrl();
+				txtUrl.setText(currentPlace.getUrl());
 			}
 
 			if (currentPlace.getStatus() != null && !currentPlace.getStatus().isEmpty())
 			{
-				statusValue = currentPlace.getStatus();
+				txtStatus.setText(currentPlace.getStatus());
 			}
 
 			if (currentPlace.getPrice() != null && !currentPlace.getPrice().isEmpty())
 			{
-				priceValue = currentPlace.getPrice();
+				txtPrice.setText(currentPlace.getPrice());
 			}
 
 			if (currentPlace.getRating() != null)
 			{
-				ratingValue = String.format("%.1f", currentPlace.getRating());
+				txtRating.setText(String.format("%.1f", currentPlace.getRating()));
 			}
-
-
-			txtName.setText(nameValue);
-			txtCategory.setText(categoryValue);
-			txtLocation.setText(locationValue);
-			txtDescription.setText(descriptionValue);
-			txtUrl.setText(urlValue);
-			txtStatus.setText(statusValue);
-			txtPrice.setText(priceValue);
-			txtRating.setText(ratingValue);
 
 			if(currentPlace.getPictureUrl() != null && !currentPlace.getPictureUrl().isEmpty())
 			{
@@ -208,6 +198,22 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 						.load(currentPlace.getPictureUrl())
 						.into(imgPhoto);
 			}
+
+			showContent();
 		}
+	}
+
+	private void hideContent()
+	{
+		progressBar.setVisibility(View.GONE);
+		contentLayout.setVisibility(View.VISIBLE);
+		btnGoTo.setVisibility(View.VISIBLE);
+	}
+
+	private void showContent()
+	{
+		progressBar.setVisibility(View.VISIBLE);
+		contentLayout.setVisibility(View.GONE);
+		btnGoTo.setVisibility(View.GONE);
 	}
 }
