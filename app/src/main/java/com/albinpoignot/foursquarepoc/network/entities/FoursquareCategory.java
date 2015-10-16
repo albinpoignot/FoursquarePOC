@@ -1,6 +1,7 @@
 package com.albinpoignot.foursquarepoc.network.entities;
 
 /**
+ * Category of a FoursquareVenue
  * Created by Albin on 14/10/2015.
  */
 public class FoursquareCategory
@@ -8,12 +9,6 @@ public class FoursquareCategory
     private String id;
 
     private String name;
-
-    private String pluralName;
-
-    private String shortName;
-
-    private Boolean primary;
 
     public String getId()
     {
@@ -33,35 +28,5 @@ public class FoursquareCategory
     public void setName(String name)
     {
         this.name = name;
-    }
-
-    public String getPluralName()
-    {
-        return pluralName;
-    }
-
-    public void setPluralName(String pluralName)
-    {
-        this.pluralName = pluralName;
-    }
-
-    public String getShortName()
-    {
-        return shortName;
-    }
-
-    public void setShortName(String shortName)
-    {
-        this.shortName = shortName;
-    }
-
-    public Boolean getPrimary()
-    {
-        return primary;
-    }
-
-    public void setPrimary(Boolean primary)
-    {
-        this.primary = primary;
     }
 }

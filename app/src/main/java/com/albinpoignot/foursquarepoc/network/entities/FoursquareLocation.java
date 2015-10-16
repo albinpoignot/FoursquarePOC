@@ -3,14 +3,12 @@ package com.albinpoignot.foursquarepoc.network.entities;
 import java.util.List;
 
 /**
+ * Entity storing information about the location of Foursquare Venue
  * Created by Albin on 14/10/2015.
  */
 public class FoursquareLocation
 {
-
     private String address;
-
-    private String crossStreet;
 
     private Float lat;
 
@@ -18,13 +16,7 @@ public class FoursquareLocation
 
     private Integer distance;
 
-    private String postalCode;
-
-    private String cc;
-
     private String city;
-
-    private String state;
 
     private String country;
 
@@ -36,14 +28,6 @@ public class FoursquareLocation
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getCrossStreet() {
-        return crossStreet;
-    }
-
-    public void setCrossStreet(String crossStreet) {
-        this.crossStreet = crossStreet;
     }
 
     public Float getLat() {
@@ -70,36 +54,12 @@ public class FoursquareLocation
         this.distance = distance;
     }
 
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getCc() {
-        return cc;
-    }
-
-    public void setCc(String cc) {
-        this.cc = cc;
-    }
-
     public String getCity() {
         return city;
     }
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
     }
 
     public String getCountry() {

@@ -1,8 +1,7 @@
 package com.albinpoignot.foursquarepoc.network.entities;
 
-import com.albinpoignot.foursquarepoc.models.Place;
-
 /**
+ * Foursquare entity holding venue stored in a response
  * Created by Albin on 15/10/2015.
  */
 public class VenueResponseContent

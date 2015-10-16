@@ -8,102 +8,134 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Utils class handling conversion from Foursquare entities to models
  * Created by Albin POIGNOT on 15/10/15.
  */
 public class EntityAdapter
 {
-	public static final String VENUE_PICTURE_SIZE = "300x300";
+    /**
+     * Venue's picture wanted size. This value will be used to generate picture URL
+     */
+    public static final String VENUE_PICTURE_SIZE = "300x300";
 
-	private EntityAdapter() { }
+    private EntityAdapter()
+    {
+    }
 
-	public static List<LightPlace> adapt(List<FoursquareCompactVenue> foursquareCompactVenues)
-	{
-		List<LightPlace> lightPlaces = new ArrayList<>();
-		for(FoursquareCompactVenue foursquareCompactVenue : foursquareCompactVenues)
-		{
-			lightPlaces.add(adapt(foursquareCompactVenue));
-		}
-		return lightPlaces;
-	}
-	public static LightPlace adapt(FoursquareCompactVenue foursquareCompactVenue)
-	{
-		LightPlace lightPlace = new LightPlace();
+    /**
+     * Convert a list of FoursquareCompactVenue to a list of LightPlace entities
+     *
+     * @param foursquareCompactVenues the list of FoursquareCompactVenue to convert
+     * @return a list of LightPlace entities. The list is empty if the FoursquareCompactVenue was empty
+     */
+    public static List<LightPlace> adapt(List<FoursquareCompactVenue> foursquareCompactVenues)
+    {
+        List<LightPlace> lightPlaces = new ArrayList<>();
+        for (FoursquareCompactVenue foursquareCompactVenue : foursquareCompactVenues)
+        {
+            lightPlaces.add(adapt(foursquareCompactVenue));
+        }
+        return lightPlaces;
+    }
 
-		List<FoursquareCategory> categoryList = foursquareCompactVenue.getCategories();
-		if(categoryList != null && categoryList.size() > 0)
-		{
-			lightPlace.setCategory(categoryList.get(0).getName());
-		}
+    /**
+     * Convert a FoursquareCompactVenue to a LightPlace entity
+     *
+     * @param foursquareCompactVenue the FoursquareCompactVenue to convert
+     * @return a LightPlace entity
+     */
+    public static LightPlace adapt(FoursquareCompactVenue foursquareCompactVenue)
+    {
+        LightPlace lightPlace = new LightPlace();
 
-		lightPlace.setId(foursquareCompactVenue.getId());
-		lightPlace.setLocation(adapt(foursquareCompactVenue.getLocation()));
-		lightPlace.setName(foursquareCompactVenue.getName());
+        List<FoursquareCategory> categoryList = foursquareCompactVenue.getCategories();
+        if (categoryList != null && categoryList.size() > 0)
+        {
+            lightPlace.setCategory(categoryList.get(0).getName());
+        }
 
-		return lightPlace;
-	}
+        lightPlace.setId(foursquareCompactVenue.getId());
+        lightPlace.setName(foursquareCompactVenue.getName());
 
-	public static Place adapt(FoursquareVenue foursquareVenue)
-	{
-		Place place = new Place();
+        return lightPlace;
+    }
 
-		List<FoursquareCategory> categoryList = foursquareVenue.getCategories();
-		if(categoryList != null && categoryList.size() > 0)
-		{
-			place.setCategory(categoryList.get(0).getName());
-		}
+    /**
+     * Convert a FoursquareVenue to a Place entity
+     *
+     * @param foursquareVenue the FoursquareVenue to convert
+     * @return a Place entity
+     */
+    public static Place adapt(FoursquareVenue foursquareVenue)
+    {
+        Place place = new Place();
 
-		place.setId(foursquareVenue.getId());
-		place.setLocation(adapt(foursquareVenue.getLocation()));
-		place.setName(foursquareVenue.getName());
+        // We use the first category
+        List<FoursquareCategory> categoryList = foursquareVenue.getCategories();
+        if (categoryList != null && categoryList.size() > 0)
+        {
+            place.setCategory(categoryList.get(0).getName());
+        }
 
-		place.setDescription(foursquareVenue.getDescription());
+        place.setId(foursquareVenue.getId());
+        place.setLocation(adapt(foursquareVenue.getLocation()));
+        place.setName(foursquareVenue.getName());
 
-		if(foursquareVenue.getPrice() != null)
-		{
-			place.setPrice(foursquareVenue.getPrice().getMessage());
-		}
+        place.setDescription(foursquareVenue.getDescription());
 
-		place.setRating(foursquareVenue.getRating());
+        if (foursquareVenue.getPrice() != null)
+        {
+            place.setPrice(foursquareVenue.getPrice().getMessage());
+        }
 
-		if(foursquareVenue.getHours() != null)
-		{
-			place.setStatus(foursquareVenue.getHours().getStatus());
-		}
+        place.setRating(foursquareVenue.getRating());
 
-		place.setUrl(foursquareVenue.getUrl());
+        if (foursquareVenue.getHours() != null)
+        {
+            place.setStatus(foursquareVenue.getHours().getStatus());
+        }
 
-		if(foursquareVenue.getPhotos() != null)
-		{
-			FoursquarePhotos photos = foursquareVenue.getPhotos();
-			if(photos.getGroups() != null && photos.getGroups().size() > 0)
-			{
-				FoursquareGroup group = photos.getGroups().get(0);
+        place.setUrl(foursquareVenue.getUrl());
 
-				if(group.getItems() != null && group.getItems().size() > 0)
-				{
-					FoursquarePhotoItem photoItem = group.getItems().get(0);
-					photoItem.getPrefix();
+        if (foursquareVenue.getPhotos() != null)
+        {
+            FoursquarePhotos photos = foursquareVenue.getPhotos();
+            if (photos.getGroups() != null && photos.getGroups().size() > 0)
+            {
+                FoursquareGroup group = photos.getGroups().get(0);
 
-					String url = photoItem.getPrefix() + VENUE_PICTURE_SIZE + photoItem.getSuffix();
-					place.setPictureUrl(url);
+                if (group.getItems() != null && group.getItems().size() > 0)
+                {
+                    FoursquarePhotoItem photoItem = group.getItems().get(0);
+                    photoItem.getPrefix();
 
-				}
-			}
-		}
+                    // According to Foursquare API documentation, the picture URL is a concatenation
+                    // of prefix + wanted size + suffix
+                    String url = photoItem.getPrefix() + VENUE_PICTURE_SIZE + photoItem.getSuffix();
+                    place.setPictureUrl(url);
 
-		return place;
-	}
+                }
+            }
+        }
 
-	public static Location adapt(FoursquareLocation foursquareLocation)
-	{
-		Location location = new Location();
-		location.setAddress(foursquareLocation.getAddress());
-		location.setCity(foursquareLocation.getCity());
-		location.setCountry(foursquareLocation.getCountry());
-		location.setDistance(foursquareLocation.getDistance());
-		location.setLatitude(foursquareLocation.getLat());
-		location.setLongitude(foursquareLocation.getLng());
+        return place;
+    }
 
-		return location;
-	}
+    /**
+     * Convert a FoursquareLocation to a Location entity
+     * @param foursquareLocation the FoursquareLocation to convert
+     * @return a Location entity
+     */
+    public static Location adapt(FoursquareLocation foursquareLocation)
+    {
+        Location location = new Location();
+        location.setAddress(foursquareLocation.getAddress());
+        location.setCity(foursquareLocation.getCity());
+        location.setCountry(foursquareLocation.getCountry());
+        location.setDistance(foursquareLocation.getDistance());
+        location.setLatitude(foursquareLocation.getLat());
+        location.setLongitude(foursquareLocation.getLng());
+
+        return location;
+    }
 }

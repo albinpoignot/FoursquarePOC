@@ -1,6 +1,7 @@
 package com.albinpoignot.foursquarepoc.network.entities;
 
 /**
+ * Entity storing information on a picture about a Foursquare venue
  * Created by Albin POIGNOT on 16/10/15.
  */
 public class FoursquarePhotoItem

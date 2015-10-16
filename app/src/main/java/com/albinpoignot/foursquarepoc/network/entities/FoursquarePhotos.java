@@ -3,6 +3,7 @@ package com.albinpoignot.foursquarepoc.network.entities;
 import java.util.List;
 
 /**
+ * Entity storing a list of FoursquareGroup
  * Created by Albin POIGNOT on 16/10/15.
  */
 public class FoursquarePhotos

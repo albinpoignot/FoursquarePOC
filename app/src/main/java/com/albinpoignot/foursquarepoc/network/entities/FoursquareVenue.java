@@ -1,8 +1,7 @@
 package com.albinpoignot.foursquarepoc.network.entities;
 
-import java.util.List;
-
 /**
+ * Fully detailed Foursquare place
  * Created by Albin on 14/10/2015.
  */
 public class FoursquareVenue extends FoursquareCompactVenue
@@ -18,6 +17,18 @@ public class FoursquareVenue extends FoursquareCompactVenue
 	private Float rating;
 
 	private FoursquarePhotos photos;
+
+	private FoursquareLocation location;
+
+	public FoursquareLocation getLocation()
+	{
+		return location;
+	}
+
+	public void setLocation(FoursquareLocation location)
+	{
+		this.location = location;
+	}
 
 	public String getDescription()
 	{
