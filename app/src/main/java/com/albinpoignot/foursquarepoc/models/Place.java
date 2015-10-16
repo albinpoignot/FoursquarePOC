@@ -95,4 +95,49 @@ public class Place extends LightPlace
     {
         this.url = url;
     }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Place place = (Place) o;
+
+        if (description != null ? !description.equals(place.description) : place.description != null)
+            return false;
+        if (url != null ? !url.equals(place.url) : place.url != null) return false;
+        if (status != null ? !status.equals(place.status) : place.status != null) return false;
+        if (price != null ? !price.equals(place.price) : place.price != null) return false;
+        if (rating != null ? !rating.equals(place.rating) : place.rating != null) return false;
+        return !(pictureUrl != null ? !pictureUrl.equals(place.pictureUrl) : place.pictureUrl != null);
+
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = super.hashCode();
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (url != null ? url.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + (rating != null ? rating.hashCode() : 0);
+        result = 31 * result + (pictureUrl != null ? pictureUrl.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Place{" +
+                "description='" + description + '\'' +
+                ", url='" + url + '\'' +
+                ", status='" + status + '\'' +
+                ", price='" + price + '\'' +
+                ", rating=" + rating +
+                ", pictureUrl='" + pictureUrl + '\'' +
+                '}';
+    }
 }
