@@ -23,173 +23,230 @@ import com.squareup.picasso.Picasso;
 import java.util.Locale;
 
 /**
+ * Activity showing the details of a place
  * Created by Albin POIGNOT on 15/10/15.
  */
 public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 {
-	public static final String VENUE_ID_TAG = "PlaceDetailsActivity.venueId";
+    /**
+     * Tag used to pass place's id via Intent
+     */
+    public static final String VENUE_ID_TAG = "PlaceDetailsActivity.venueId";
 
-	private Place currentPlace;
+    /**
+     * The place to display
+     */
+    private Place currentPlace;
 
-	private TextView txtName;
+    /**
+     * UI Component holding the name of the place
+     */
+    private TextView txtName;
 
-	private TextView txtCategory;
+    /**
+     * UI Component holding the category of the place
+     */
+    private TextView txtCategory;
 
-	private TextView txtLocation;
+    /**
+     * UI Component holding the location of the place
+     */
+    private TextView txtLocation;
 
-	private TextView txtDescription;
+    /**
+     * UI Component holding the description of the place
+     */
+    private TextView txtDescription;
 
-	private TextView txtUrl;
+    /**
+     * UI Component holding the URL of the place
+     */
+    private TextView txtUrl;
 
-	private TextView txtStatus;
+    /**
+     * UI Component holding the open status of the place
+     */
+    private TextView txtStatus;
 
-	private TextView txtPrice;
+    /**
+     * UI Component holding the price range of the place
+     */
+    private TextView txtPrice;
 
-	private TextView txtRating;
+    /**
+     * UI Component holding the rating of the place
+     */
+    private TextView txtRating;
 
-	private Button btnGoTo;
+    /**
+     * Button to see the place on an external map
+     */
+    private Button btnGoTo;
 
-	private ImageView imgPhoto;
+    /**
+     * UI Component holding the photo of the place
+     */
+    private ImageView imgPhoto;
 
-	private ProgressBar progressBar;
+    /**
+     * Loading progress indicator
+     */
+    private ProgressBar progressBar;
 
-	private ViewGroup contentLayout;
+    /**
+     * UI Component holding all the views that holds the place details
+     */
+    private ViewGroup contentLayout;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_place_details);
 
-		txtName = (TextView) findViewById(R.id.place_details_name);
-		txtCategory = (TextView) findViewById(R.id.place_details_type);
-		txtLocation = (TextView) findViewById(R.id.place_details_location);
-		txtDescription = (TextView) findViewById(R.id.place_details_description);
-		txtUrl = (TextView) findViewById(R.id.place_details_url);
-		txtStatus = (TextView) findViewById(R.id.place_details_hours);
-		txtPrice = (TextView) findViewById(R.id.place_details_price);
-		txtRating = (TextView) findViewById(R.id.place_details_rating);
-		btnGoTo = (Button) findViewById(R.id.place_details_goto);
-		imgPhoto = (ImageView) findViewById(R.id.place_details_photo);
-		progressBar = (ProgressBar) findViewById(R.id.place_details_progress);
-		contentLayout = (ViewGroup) findViewById(R.id.place_details_content_layout);
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_place_details);
 
-		ActionBar actionBar = getActionBar();
-		if(actionBar != null)
-		{
-			actionBar.setDisplayHomeAsUpEnabled(true);
-		}
-	}
+        // Bind the views
+        txtName = (TextView) findViewById(R.id.place_details_name);
+        txtCategory = (TextView) findViewById(R.id.place_details_type);
+        txtLocation = (TextView) findViewById(R.id.place_details_location);
+        txtDescription = (TextView) findViewById(R.id.place_details_description);
+        txtUrl = (TextView) findViewById(R.id.place_details_url);
+        txtStatus = (TextView) findViewById(R.id.place_details_hours);
+        txtPrice = (TextView) findViewById(R.id.place_details_price);
+        txtRating = (TextView) findViewById(R.id.place_details_rating);
+        btnGoTo = (Button) findViewById(R.id.place_details_goto);
+        imgPhoto = (ImageView) findViewById(R.id.place_details_photo);
+        progressBar = (ProgressBar) findViewById(R.id.place_details_progress);
+        contentLayout = (ViewGroup) findViewById(R.id.place_details_content_layout);
 
-	@Override
-	public void onError(Integer resId)
-	{
-		Toast.makeText(this, resId, Toast.LENGTH_LONG).show();
-		finish();
-	}
+        // Enable the "up" button to go back
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null)
+        {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
-	@Override
-	public void onPlaceReceived(Place place)
-	{
-		currentPlace = place;
-		setViewsContent();
-	}
+        // Defines the action for the button to show a map
+        btnGoTo.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if (currentPlace != null && currentPlace.getLocation() != null)
+                {
+                    String address = currentPlace.getLocation().getAddress();
+                    address = address.concat(currentPlace.getLocation().getCity());
+                    address = address.concat(currentPlace.getLocation().getCountry());
 
-	@Override
-	protected void onResume()
-	{
-		super.onResume();
+                    String uri = String.format(Locale.ENGLISH, "geo:%f,%f?q=%s(%s)", currentPlace.getLocation().getLatitude(), currentPlace.getLocation().getLongitude(), address, currentPlace.getName());
+                    Uri uriParsed = Uri.parse(uri);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uriParsed);
+                    startActivity(intent);
+                }
+            }
+        });
+    }
 
-		if (currentPlace != null)
-		{
-			setViewsContent();
-		}
-		else
-		{
-			Intent intent = getIntent();
-			if (intent != null)
-			{
-				String currentPlaceId = intent.getStringExtra(VENUE_ID_TAG);
+    @Override
+    public void onError(Integer resId)
+    {
+        Toast.makeText(this, resId, Toast.LENGTH_LONG).show();
+        finish();
+    }
 
-				hideContent();
+    @Override
+    public void onPlaceReceived(Place place)
+    {
+        currentPlace = place;
+        setViewsContent();
+        showContent();
+    }
 
-				GetPlaceService getPlaceService = new GetPlaceService(this);
-				getPlaceService.getPlace(currentPlaceId);
-			}
-		}
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
 
-		btnGoTo.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				if (currentPlace != null && currentPlace.getLocation() != null)
-				{
-					String address = currentPlace.getLocation().getAddress();
-					address = address.concat(currentPlace.getLocation().getCity());
-					address = address.concat(currentPlace.getLocation().getCountry());
+        // Get the place to display from network or display the one we already got
+        if (currentPlace == null)
+        {
+            Intent intent = getIntent();
+            if (intent != null)
+            {
+                String currentPlaceId = intent.getStringExtra(VENUE_ID_TAG);
 
-					String uri = String.format(Locale.ENGLISH, "geo:%f,%f?q=%s(%s)", currentPlace.getLocation().getLatitude(), currentPlace.getLocation().getLongitude(), address, currentPlace.getName());
-					Uri uriParsed = Uri.parse(uri);
-					Intent intent = new Intent(Intent.ACTION_VIEW, uriParsed);
-					startActivity(intent);
-				}
-			}
-		});
-	}
+                hideContent();
 
-	private void setViewsContent()
-	{
-		if (currentPlace != null)
-		{
-			txtName.setText(currentPlace.getName());
-			txtCategory.setText(currentPlace.getCategory());
-			txtDescription.setText(currentPlace.getDescription());
-			txtUrl.setText(currentPlace.getUrl());
-			txtStatus.setText(currentPlace.getStatus());
-			txtPrice.setText(currentPlace.getPrice());
+                GetPlaceService getPlaceService = new GetPlaceService(this);
+                getPlaceService.getPlace(currentPlaceId);
+            }
+        }
+        else
+        {
+            setViewsContent();
+            showContent();
+        }
+    }
 
-			if(currentPlace.getRating() != null)
-			{
-				txtRating.setText(String.format("%.1f", currentPlace.getRating()));
-			}
+    /**
+     * Set the details of the place in the Views.
+     */
+    private void setViewsContent()
+    {
+        if (currentPlace != null)
+        {
+            txtName.setText(currentPlace.getName());
+            txtCategory.setText(currentPlace.getCategory());
+            txtDescription.setText(currentPlace.getDescription());
+            txtUrl.setText(currentPlace.getUrl());
+            txtStatus.setText(currentPlace.getStatus());
+            txtPrice.setText(currentPlace.getPrice());
 
-			if (currentPlace.getLocation() != null)
-			{
-				txtLocation.setText(currentPlace.getLocation().getAddress());
+            if (currentPlace.getRating() != null)
+            {
+                txtRating.setText(String.format("%.1f", currentPlace.getRating()));
+            }
 
-				if(currentPlace.getLocation().getLatitude() != null && currentPlace.getLocation().getLongitude() != null)
-				{
-					btnGoTo.setClickable(true);
-				}
-				else
-				{
-					btnGoTo.setClickable(false);
-				}
-			}
+            if (currentPlace.getLocation() != null)
+            {
+                txtLocation.setText(currentPlace.getLocation().getAddress());
 
-			if(currentPlace.getPictureUrl() != null)
-			{
-				Picasso.with(this)
-						.load(currentPlace.getPictureUrl())
-						.into(imgPhoto);
-			}
+                if (currentPlace.getLocation().getLatitude() != null && currentPlace.getLocation().getLongitude() != null)
+                {
+                    btnGoTo.setClickable(true);
+                }
+                else
+                {
+                    btnGoTo.setClickable(false);
+                }
+            }
 
-			showContent();
-		}
-	}
+            if (currentPlace.getPictureUrl() != null)
+            {
+                Picasso.with(this)
+                        .load(currentPlace.getPictureUrl())
+                        .into(imgPhoto);
+            }
+        }
+    }
 
-	private void hideContent()
-	{
-		progressBar.setVisibility(View.VISIBLE);
-		contentLayout.setVisibility(View.GONE);
-		btnGoTo.setVisibility(View.GONE);
-	}
+    /**
+     * Hides the content Views and shows the progress bar
+     */
+    private void hideContent()
+    {
+        progressBar.setVisibility(View.VISIBLE);
+        contentLayout.setVisibility(View.GONE);
+        btnGoTo.setVisibility(View.GONE);
+    }
 
-	private void showContent()
-	{
-		progressBar.setVisibility(View.GONE);
-		contentLayout.setVisibility(View.VISIBLE);
-		btnGoTo.setVisibility(View.VISIBLE);
-	}
+    /**
+     * Shows the content Views and hides the progress bar
+     */
+    private void showContent()
+    {
+        progressBar.setVisibility(View.GONE);
+        contentLayout.setVisibility(View.VISIBLE);
+        btnGoTo.setVisibility(View.VISIBLE);
+    }
 }
