@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
-        <activity android:name=".activities.PlacesListActivity" >
+        <activity android:name=".activities.PlacesListActivity"
+                  android:label="Restaurants proches">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +21,8 @@
         </activity>
 
         <activity android:name=".activities.PlaceDetailsActivity"
-                  android:parentActivityName=".activities.PlacesListActivity">
+                  android:parentActivityName=".activities.PlacesListActivity"
+                  android:label="Détails">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
