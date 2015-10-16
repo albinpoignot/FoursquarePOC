@@ -142,18 +142,17 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 	{
 		if (currentPlace != null)
 		{
-			if (currentPlace.getName() != null && !currentPlace.getName().isEmpty())
+			if (currentPlace.getName() != null)
 			{
 				txtName.setText(currentPlace.getName());
 			}
 
-			if(currentPlace.getCategory() != null && !currentPlace.getCategory().isEmpty())
+			if(currentPlace.getCategory() != null)
 			{
 				txtCategory.setText(currentPlace.getCategory());
 			}
 
-			if (currentPlace.getLocation() != null && currentPlace.getLocation().getAddress() != null
-					&& !currentPlace.getLocation().getAddress().isEmpty())
+			if (currentPlace.getLocation() != null && currentPlace.getLocation().getAddress() != null)
 			{
 				txtLocation.setText(currentPlace.getLocation().getAddress());
 
@@ -167,22 +166,22 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 				}
 			}
 
-			if (currentPlace.getDescription() != null && !currentPlace.getDescription().isEmpty())
+			if (currentPlace.getDescription() != null)
 			{
 				txtDescription.setText(currentPlace.getDescription());
 			}
 
-			if (currentPlace.getUrl() != null && !currentPlace.getUrl().isEmpty())
+			if (currentPlace.getUrl() != null)
 			{
 				txtUrl.setText(currentPlace.getUrl());
 			}
 
-			if (currentPlace.getStatus() != null && !currentPlace.getStatus().isEmpty())
+			if (currentPlace.getStatus() != null)
 			{
 				txtStatus.setText(currentPlace.getStatus());
 			}
 
-			if (currentPlace.getPrice() != null && !currentPlace.getPrice().isEmpty())
+			if (currentPlace.getPrice() != null)
 			{
 				txtPrice.setText(currentPlace.getPrice());
 			}
@@ -192,7 +191,7 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 				txtRating.setText(String.format("%.1f", currentPlace.getRating()));
 			}
 
-			if(currentPlace.getPictureUrl() != null && !currentPlace.getPictureUrl().isEmpty())
+			if(currentPlace.getPictureUrl() != null)
 			{
 				Picasso.with(this)
 						.load(currentPlace.getPictureUrl())

@@ -30,13 +30,11 @@ public class EntityAdapter
 		LightPlace lightPlace = new LightPlace();
 
 		List<FoursquareCategory> categoryList = foursquareCompactVenue.getCategories();
-		String categoryToUse = "";
 		if(categoryList != null && categoryList.size() > 0)
 		{
-			categoryToUse = categoryList.get(0).getName();
+			lightPlace.setCategory(categoryList.get(0).getName());
 		}
 
-		lightPlace.setCategory(categoryToUse);
 		lightPlace.setId(foursquareCompactVenue.getId());
 		lightPlace.setLocation(adapt(foursquareCompactVenue.getLocation()));
 		lightPlace.setName(foursquareCompactVenue.getName());
@@ -49,16 +47,10 @@ public class EntityAdapter
 		Place place = new Place();
 
 		List<FoursquareCategory> categoryList = foursquareVenue.getCategories();
-		String categoryToUse;
 		if(categoryList != null && categoryList.size() > 0)
 		{
-			categoryToUse = categoryList.get(0).getName();
+			place.setCategory(categoryList.get(0).getName());
 		}
-		else
-		{
-			categoryToUse = "";
-		}
-		place.setCategory(categoryToUse);
 
 		place.setId(foursquareVenue.getId());
 		place.setLocation(adapt(foursquareVenue.getLocation()));
@@ -66,30 +58,17 @@ public class EntityAdapter
 
 		place.setDescription(foursquareVenue.getDescription());
 
-		String priceToUse;
 		if(foursquareVenue.getPrice() != null)
 		{
-			priceToUse = foursquareVenue.getPrice().getMessage();
+			place.setPrice(foursquareVenue.getPrice().getMessage());
 		}
-		else
-		{
-			priceToUse = "";
-		}
-		place.setPrice(priceToUse);
-
 
 		place.setRating(foursquareVenue.getRating());
 
-		String statusToUse;
 		if(foursquareVenue.getHours() != null)
 		{
-			statusToUse = foursquareVenue.getHours().getStatus();
+			place.setStatus(foursquareVenue.getHours().getStatus());
 		}
-		else
-		{
-			statusToUse = "";
-		}
-		place.setStatus(statusToUse);
 
 		place.setUrl(foursquareVenue.getUrl());
 
