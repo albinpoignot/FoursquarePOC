@@ -205,15 +205,15 @@ public class PlaceDetailsActivity extends Activity implements GetPlaceListener
 
 	private void hideContent()
 	{
-		progressBar.setVisibility(View.GONE);
-		contentLayout.setVisibility(View.VISIBLE);
-		btnGoTo.setVisibility(View.VISIBLE);
+		progressBar.setVisibility(View.VISIBLE);
+		contentLayout.setVisibility(View.GONE);
+		btnGoTo.setVisibility(View.GONE);
 	}
 
 	private void showContent()
 	{
-		progressBar.setVisibility(View.VISIBLE);
-		contentLayout.setVisibility(View.GONE);
-		btnGoTo.setVisibility(View.GONE);
+		progressBar.setVisibility(View.GONE);
+		contentLayout.setVisibility(View.VISIBLE);
+		btnGoTo.setVisibility(View.VISIBLE);
 	}
 }

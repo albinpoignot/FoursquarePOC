@@ -64,7 +64,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/activity_details_na"
                 tools:text="Description description description description"/>
 
             <TextView
