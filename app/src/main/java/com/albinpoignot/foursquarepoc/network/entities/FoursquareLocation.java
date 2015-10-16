@@ -22,59 +22,73 @@ public class FoursquareLocation
 
     private List<String> formattedAddress;
 
-    public String getAddress() {
+    public String getAddress()
+    {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(String address)
+    {
         this.address = address;
     }
 
-    public Float getLat() {
+    public Float getLat()
+    {
         return lat;
     }
 
-    public void setLat(Float lat) {
+    public void setLat(Float lat)
+    {
         this.lat = lat;
     }
 
-    public Float getLng() {
+    public Float getLng()
+    {
         return lng;
     }
 
-    public void setLng(Float lng) {
+    public void setLng(Float lng)
+    {
         this.lng = lng;
     }
 
-    public Integer getDistance() {
+    public Integer getDistance()
+    {
         return distance;
     }
 
-    public void setDistance(Integer distance) {
+    public void setDistance(Integer distance)
+    {
         this.distance = distance;
     }
 
-    public String getCity() {
+    public String getCity()
+    {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(String city)
+    {
         this.city = city;
     }
 
-    public String getCountry() {
+    public String getCountry()
+    {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(String country)
+    {
         this.country = country;
     }
 
-    public List<String> getFormattedAddress() {
+    public List<String> getFormattedAddress()
+    {
         return formattedAddress;
     }
 
-    public void setFormattedAddress(List<String> formattedAddress) {
+    public void setFormattedAddress(List<String> formattedAddress)
+    {
         this.formattedAddress = formattedAddress;
     }
 }

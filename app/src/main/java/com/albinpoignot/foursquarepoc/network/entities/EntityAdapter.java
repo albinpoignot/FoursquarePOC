@@ -123,6 +123,7 @@ public class EntityAdapter
 
     /**
      * Convert a FoursquareLocation to a Location entity
+     *
      * @param foursquareLocation the FoursquareLocation to convert
      * @return a Location entity
      */

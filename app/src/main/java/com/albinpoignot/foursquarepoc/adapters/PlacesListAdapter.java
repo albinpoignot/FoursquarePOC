@@ -35,17 +35,20 @@ public class PlacesListAdapter extends BaseAdapter
     }
 
     @Override
-    public int getCount() {
+    public int getCount()
+    {
         return lightPlaces.size();
     }
 
     @Override
-    public Object getItem(int position) {
+    public Object getItem(int position)
+    {
         return lightPlaces.get(position);
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(int position)
+    {
         return position;
     }
 
@@ -74,7 +77,7 @@ public class PlacesListAdapter extends BaseAdapter
 
         holder.txtName.setText(place.getName());
 
-        if(place.getLocation() != null && place.getLocation().getDistance() != null)
+        if (place.getLocation() != null && place.getLocation().getDistance() != null)
         {
             holder.txtDistance.setText(place.getLocation().getDistance());
             holder.txtDistance.setVisibility(View.VISIBLE);
@@ -84,8 +87,8 @@ public class PlacesListAdapter extends BaseAdapter
             holder.txtDistance.setVisibility(View.GONE);
         }
 
-		String placeCategory = place.getCategory();
-        if(placeCategory != null && !placeCategory.isEmpty())
+        String placeCategory = place.getCategory();
+        if (placeCategory != null && !placeCategory.isEmpty())
         {
             holder.txtCategories.setText(placeCategory);
             holder.txtDistance.setVisibility(View.VISIBLE);

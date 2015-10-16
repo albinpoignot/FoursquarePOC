@@ -6,63 +6,63 @@ package com.albinpoignot.foursquarepoc.network.entities;
  */
 public class FoursquarePhotoItem
 {
-	private String id;
+    private String id;
 
-	private String prefix;
+    private String prefix;
 
-	private String suffix;
+    private String suffix;
 
-	private Integer width;
+    private Integer width;
 
-	private Integer weight;
+    private Integer weight;
 
-	public String getId()
-	{
-		return id;
-	}
+    public String getId()
+    {
+        return id;
+    }
 
-	public void setId(String id)
-	{
-		this.id = id;
-	}
+    public void setId(String id)
+    {
+        this.id = id;
+    }
 
-	public String getPrefix()
-	{
-		return prefix;
-	}
+    public String getPrefix()
+    {
+        return prefix;
+    }
 
-	public void setPrefix(String prefix)
-	{
-		this.prefix = prefix;
-	}
+    public void setPrefix(String prefix)
+    {
+        this.prefix = prefix;
+    }
 
-	public String getSuffix()
-	{
-		return suffix;
-	}
+    public String getSuffix()
+    {
+        return suffix;
+    }
 
-	public void setSuffix(String suffix)
-	{
-		this.suffix = suffix;
-	}
+    public void setSuffix(String suffix)
+    {
+        this.suffix = suffix;
+    }
 
-	public Integer getWidth()
-	{
-		return width;
-	}
+    public Integer getWidth()
+    {
+        return width;
+    }
 
-	public void setWidth(Integer width)
-	{
-		this.width = width;
-	}
+    public void setWidth(Integer width)
+    {
+        this.width = width;
+    }
 
-	public Integer getWeight()
-	{
-		return weight;
-	}
+    public Integer getWeight()
+    {
+        return weight;
+    }
 
-	public void setWeight(Integer weight)
-	{
-		this.weight = weight;
-	}
+    public void setWeight(Integer weight)
+    {
+        this.weight = weight;
+    }
 }

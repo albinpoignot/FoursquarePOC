@@ -10,9 +10,9 @@ public class FoursquareCompactVenue
 {
     protected String id;
 
-	protected String name;
+    protected String name;
 
-	protected List<FoursquareCategory> categories;
+    protected List<FoursquareCategory> categories;
 
     public String getId()
     {

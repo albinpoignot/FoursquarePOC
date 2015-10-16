@@ -6,15 +6,15 @@ package com.albinpoignot.foursquarepoc.network.entities;
  */
 public class FoursquarePrice
 {
-	private String message;
+    private String message;
 
-	public String getMessage()
-	{
-		return message;
-	}
+    public String getMessage()
+    {
+        return message;
+    }
 
-	public void setMessage(String message)
-	{
-		this.message = message;
-	}
+    public void setMessage(String message)
+    {
+        this.message = message;
+    }
 }

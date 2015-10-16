@@ -15,7 +15,6 @@ import retrofit.http.Query;
  */
 public interface FoursquareVenueClient
 {
-
     /**
      * Get the nearest Venues around a given point
      *

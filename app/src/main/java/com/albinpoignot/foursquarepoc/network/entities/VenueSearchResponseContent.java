@@ -10,11 +10,13 @@ public class VenueSearchResponseContent
 {
     private List<FoursquareCompactVenue> venues;
 
-    public List<FoursquareCompactVenue> getCompactVenues() {
+    public List<FoursquareCompactVenue> getCompactVenues()
+    {
         return venues;
     }
 
-    public void setCompactVenues(List<FoursquareCompactVenue> lightPlaces) {
+    public void setCompactVenues(List<FoursquareCompactVenue> lightPlaces)
+    {
         this.venues = lightPlaces;
     }
 }

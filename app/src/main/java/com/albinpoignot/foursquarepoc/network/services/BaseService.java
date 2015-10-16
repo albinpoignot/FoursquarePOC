@@ -1,7 +1,5 @@
 package com.albinpoignot.foursquarepoc.network.services;
 
-import com.albinpoignot.foursquarepoc.R;
-
 import retrofit.RetrofitError;
 
 /**

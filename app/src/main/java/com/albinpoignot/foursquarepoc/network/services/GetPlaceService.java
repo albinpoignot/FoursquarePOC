@@ -1,6 +1,5 @@
 package com.albinpoignot.foursquarepoc.network.services;
 
-import com.albinpoignot.foursquarepoc.R;
 import com.albinpoignot.foursquarepoc.models.Place;
 import com.albinpoignot.foursquarepoc.network.FoursquareClientGenerator;
 import com.albinpoignot.foursquarepoc.network.clients.FoursquareVenueClient;

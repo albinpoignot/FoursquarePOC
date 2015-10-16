@@ -6,93 +6,93 @@ package com.albinpoignot.foursquarepoc.models;
  */
 public class Place extends LightPlace
 {
-	/**
-	 * The description of the place
-	 */
-	private String description;
+    /**
+     * The description of the place
+     */
+    private String description;
 
-	/**
-	 * The URL of the place's web site
-	 */
-	private String url;
+    /**
+     * The URL of the place's web site
+     */
+    private String url;
 
-	/**
-	 * The status of the place (open or close)
-	 */
-	private String status;
+    /**
+     * The status of the place (open or close)
+     */
+    private String status;
 
-	/**
-	 * The price range of the place
-	 */
-	private String price;
+    /**
+     * The price range of the place
+     */
+    private String price;
 
-	/**
-	 * The rating of the place
-	 */
-	private Float rating;
+    /**
+     * The rating of the place
+     */
+    private Float rating;
 
-	/**
-	 * The URL of picture about the place
-	 */
-	private String pictureUrl;
+    /**
+     * The URL of picture about the place
+     */
+    private String pictureUrl;
 
-	public String getDescription()
-	{
-		return description;
-	}
+    public String getDescription()
+    {
+        return description;
+    }
 
-	public String getPictureUrl()
-	{
-		return pictureUrl;
-	}
+    public String getPictureUrl()
+    {
+        return pictureUrl;
+    }
 
-	public String getPrice()
-	{
-		return price;
-	}
+    public String getPrice()
+    {
+        return price;
+    }
 
-	public Float getRating()
-	{
-		return rating;
-	}
+    public Float getRating()
+    {
+        return rating;
+    }
 
-	public String getStatus()
-	{
-		return status;
-	}
+    public String getStatus()
+    {
+        return status;
+    }
 
-	public String getUrl()
-	{
-		return url;
-	}
+    public String getUrl()
+    {
+        return url;
+    }
 
-	public void setDescription(String description)
-	{
-		this.description = description;
-	}
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
 
-	public void setPictureUrl(String pictureUrl)
-	{
-		this.pictureUrl = pictureUrl;
-	}
+    public void setPictureUrl(String pictureUrl)
+    {
+        this.pictureUrl = pictureUrl;
+    }
 
-	public void setPrice(String price)
-	{
-		this.price = price;
-	}
+    public void setPrice(String price)
+    {
+        this.price = price;
+    }
 
-	public void setRating(Float rating)
-	{
-		this.rating = rating;
-	}
+    public void setRating(Float rating)
+    {
+        this.rating = rating;
+    }
 
-	public void setStatus(String status)
-	{
-		this.status = status;
-	}
+    public void setStatus(String status)
+    {
+        this.status = status;
+    }
 
-	public void setUrl(String url)
-	{
-		this.url = url;
-	}
+    public void setUrl(String url)
+    {
+        this.url = url;
+    }
 }

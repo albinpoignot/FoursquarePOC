@@ -8,11 +8,13 @@ public class FoursquareResponse<T>
 {
     private T response;
 
-    public T getResponseField() {
+    public T getResponseField()
+    {
         return response;
     }
 
-    public void setResponseField(T venueSearchResponseContent) {
+    public void setResponseField(T venueSearchResponseContent)
+    {
         this.response = venueSearchResponseContent;
     }
 }

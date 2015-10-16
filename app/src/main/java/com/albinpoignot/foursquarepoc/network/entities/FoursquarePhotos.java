@@ -8,15 +8,15 @@ import java.util.List;
  */
 public class FoursquarePhotos
 {
-	private List<FoursquareGroup> groups;
+    private List<FoursquareGroup> groups;
 
-	public List<FoursquareGroup> getGroups()
-	{
-		return groups;
-	}
+    public List<FoursquareGroup> getGroups()
+    {
+        return groups;
+    }
 
-	public void setGroups(List<FoursquareGroup> groups)
-	{
-		this.groups = groups;
-	}
+    public void setGroups(List<FoursquareGroup> groups)
+    {
+        this.groups = groups;
+    }
 }

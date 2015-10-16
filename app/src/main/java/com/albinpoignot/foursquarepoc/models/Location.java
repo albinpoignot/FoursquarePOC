@@ -6,7 +6,6 @@ package com.albinpoignot.foursquarepoc.models;
  */
 public class Location
 {
-
     /**
      * The address of the place
      */
