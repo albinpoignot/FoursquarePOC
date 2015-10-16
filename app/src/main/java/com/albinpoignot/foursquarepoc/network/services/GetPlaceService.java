@@ -15,53 +15,67 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
+ * Service used to get fully detailed Places.
  * Created by Albin POIGNOT on 15/10/15.
  */
 public class GetPlaceService extends BaseService implements Callback<FoursquareResponse<VenueResponseContent>>
 {
-	private GetPlaceListener getPlaceListener;
+    /**
+     * The listener to call after the operation
+     */
+    private GetPlaceListener getPlaceListener;
 
-	public GetPlaceService(GetPlaceListener listener)
-	{
-		this.getPlaceListener = listener;
-	}
+    /**
+     * Constructor
+     *
+     * @param listener the listener that will be called
+     */
+    public GetPlaceService(GetPlaceListener listener)
+    {
+        this.getPlaceListener = listener;
+    }
 
-	public void getPlace(String id)
-	{
-		FoursquareVenueClient foursquareVenueClient = FoursquareClientGenerator.createClient(FoursquareVenueClient.class);
-		foursquareVenueClient.getVenue(id, this);
-	}
+    /**
+     * Get a Place
+     *
+     * @param id the id of the Place
+     */
+    public void getPlace(String id)
+    {
+        FoursquareVenueClient foursquareVenueClient = FoursquareClientGenerator.createClient(FoursquareVenueClient.class);
+        foursquareVenueClient.getVenue(id, this);
+    }
 
-	@Override
-	public void success(FoursquareResponse<VenueResponseContent> venueResponseContentFoursquareResponse, Response response)
-	{
-		if(getPlaceListener != null)
-		{
-			VenueResponseContent responseContent = venueResponseContentFoursquareResponse.getResponseField();
-			if(responseContent != null)
-			{
-				FoursquareVenue foursquareVenue = responseContent.getVenue();
-				if(foursquareVenue != null)
-				{
-					Place place = EntityAdapter.adapt(foursquareVenue);
-					getPlaceListener.onPlaceReceived(place);
-				}
-				else
-				{
-					getPlaceListener.onError(R.string.place_not_found);
-				}
-			}
-			else
-			{
-				getPlaceListener.onError(R.string.place_not_found);
-			}
+    @Override
+    public void success(FoursquareResponse<VenueResponseContent> venueResponseContentFoursquareResponse, Response response)
+    {
+        if (getPlaceListener != null)
+        {
+            VenueResponseContent responseContent = venueResponseContentFoursquareResponse.getResponseField();
+            if (responseContent != null)
+            {
+                FoursquareVenue foursquareVenue = responseContent.getVenue();
+                if (foursquareVenue != null)
+                {
+                    Place place = EntityAdapter.adapt(foursquareVenue);
+                    getPlaceListener.onPlaceReceived(place);
+                }
+                else
+                {
+                    getPlaceListener.onError(R.string.place_not_found);
+                }
+            }
+            else
+            {
+                getPlaceListener.onError(R.string.place_not_found);
+            }
 
-		}
-	}
+        }
+    }
 
-	@Override
-	public void failure(RetrofitError error)
-	{
-		getPlaceListener.onError(getErrorResourceId(error.getKind()));
-	}
+    @Override
+    public void failure(RetrofitError error)
+    {
+        getPlaceListener.onError(getErrorResourceId(error.getKind()));
+    }
 }

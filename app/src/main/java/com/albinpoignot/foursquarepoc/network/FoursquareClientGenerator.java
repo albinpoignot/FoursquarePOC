@@ -15,54 +15,85 @@ import retrofit.client.OkClient;
  */
 public class FoursquareClientGenerator
 {
-	private static final String BASE_URL = "https://api.foursquare.com/v2/";
+    /**
+     * Base URL of the Foursquare API
+     */
+    private static final String BASE_URL = "https://api.foursquare.com/v2/";
 
-	private static final String CLIENT_ID_KEY = "client_id";
+    /**
+     * Client ID request param key
+     */
+    private static final String CLIENT_ID_KEY = "client_id";
 
-	private static final String CLIENT_SECRET_KEY = "client_secret";
+    /**
+     * Client key request param key
+     */
+    private static final String CLIENT_SECRET_KEY = "client_secret";
 
-	private static final String VERSION_KEY = "v";
+    /**
+     * Version request param key
+     */
+    private static final String VERSION_KEY = "v";
 
-	private static final String LANGUAGE_HEADER_KEY = "Accept-Language";
+    /**
+     * Accept-Language HTTP request's header key
+     */
+    private static final String LANGUAGE_HEADER_KEY = "Accept-Language";
 
-	private FoursquareClientGenerator()
-	{
-	}
+    /**
+     * Client ID value. Storing it here just in the context of this POC.
+     */
+    private static final String CLIENT_ID_VALUE = "JTPSFKFL10KHLGQS2ITTTOUSD0JMS1MBRJ0GVYSXHEGSBOKJ";
 
-	/**
-	 * Create a client for the given interface
-	 * @param serviceClass
-	 * @param <S>
-	 * @return
-	 */
-	public static <S> S createClient(Class<S> serviceClass)
-	{
-		RestAdapter.Builder builder = new RestAdapter.Builder()
-				.setEndpoint(BASE_URL)
-				.setClient(new OkClient(new OkHttpClient()));
+    /**
+     * Client key value. Storing it here just in the context of this POC.
+     */
+    private static final String CLIENT_KEY_VALUE = "VXWOZEBI0KCKBWBKZ4GJPMDMPKI5EYEJOFR13450IR1X2KMC";
 
-		// TODO Remove the logging of every requests
-		builder.setLogLevel(RestAdapter.LogLevel.FULL).setLog(new AndroidLog("Retrofit"));
+    /**
+     * Value value. Storing it here just in the context of this POC.
+     */
+    private static final String VERSION_VALUE = "20151014";
 
-		builder.setRequestInterceptor(new RequestInterceptor()
-		{
-			@Override
-			public void intercept(RequestFacade request)
-			{
-				// TODO Put the credentials somewhere else
+    private FoursquareClientGenerator()
+    {
+    }
 
-				// Add credentials
-				request.addQueryParam(CLIENT_ID_KEY, "JTPSFKFL10KHLGQS2ITTTOUSD0JMS1MBRJ0GVYSXHEGSBOKJ");
-				request.addQueryParam(CLIENT_SECRET_KEY, "VXWOZEBI0KCKBWBKZ4GJPMDMPKI5EYEJOFR13450IR1X2KMC");
-				request.addQueryParam(VERSION_KEY, "20151014");
+    /**
+     * Create a client for the given interface
+     *
+     * @param serviceClass the Service interface
+     * @param <S>          the Service interface
+     * @return an instantiated Service, corresponding to the given interface
+     */
+    public static <S> S createClient(Class<S> serviceClass)
+    {
+        // Configuring basic builder with OkHttpClient
+        RestAdapter.Builder builder = new RestAdapter.Builder()
+                .setEndpoint(BASE_URL)
+                .setClient(new OkClient(new OkHttpClient()));
 
-				// Force language to the locale
-				request.addHeader(LANGUAGE_HEADER_KEY, Locale.getDefault().getLanguage());
-			}
-		});
+        // TODO Remove the logging of every requests
+        builder.setLogLevel(RestAdapter.LogLevel.FULL).setLog(new AndroidLog("Retrofit"));
 
-		RestAdapter adapter = builder.build();
+        // Intercept every requests to add authentication and locale information
+        builder.setRequestInterceptor(new RequestInterceptor()
+        {
+            @Override
+            public void intercept(RequestFacade request)
+            {
+                // Add credentials
+                request.addQueryParam(CLIENT_ID_KEY, CLIENT_ID_VALUE);
+                request.addQueryParam(CLIENT_SECRET_KEY, CLIENT_KEY_VALUE);
+                request.addQueryParam(VERSION_KEY, VERSION_VALUE);
 
-		return adapter.create(serviceClass);
-	}
+                // Set language of the response to the Locale's language
+                request.addHeader(LANGUAGE_HEADER_KEY, Locale.getDefault().getLanguage());
+            }
+        });
+
+        RestAdapter adapter = builder.build();
+
+        return adapter.create(serviceClass);
+    }
 }
